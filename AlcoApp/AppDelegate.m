@@ -10,6 +10,7 @@
 #import "StartViewController.h"
 #import "DataManager.h"
 #import "User+CoreDataProperties.h"
+#import "GeneralInformationViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,9 +22,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    StartViewController *vc = [[StartViewController alloc] initWithNibName:@"StartViewController" bundle:nil];
+    StartViewController *vc = [[StartViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = navigationController;
+    
+    [navigationController pushViewController:[GeneralInformationViewController new] animated:YES];
+    
+    [UINavigationBar appearance].backgroundColor = [UIColor colorWithRed:224.0/255.0 green:129.0/255.0 blue:145.0/255.0 alpha:1.0];
+//    [navigationController setNavigationBarHidden:NO animated:YES];
+
+
     [self.window makeKeyAndVisible];
     
     
