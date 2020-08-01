@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0734E42A24D5F60100F5C71B /* StartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0734E42924D5F60100F5C71B /* StartViewController.xib */; };
 		9A63690224D56FE200B8579B /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63690024D56FE200B8579B /* UserInfoViewController.m */; };
 		9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690124D56FE200B8579B /* UserInfoViewController.xib */; };
 		9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */; };
@@ -34,7 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0734E42924D5F60100F5C71B /* StartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewController.xib; sourceTree = "<group>"; };
 		9A6368FF24D56FE200B8579B /* UserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		9A63690024D56FE200B8579B /* UserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		9A63690124D56FE200B8579B /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			children = (
 				9A8E9A4B24D56BA00033E1C4 /* StartViewController.h */,
 				9A8E9A4C24D56BA00033E1C4 /* StartViewController.m */,
-				0734E42924D5F60100F5C71B /* StartViewController.xib */,
 			);
 			path = StartViewController;
 			sourceTree = "<group>";
@@ -297,12 +294,10 @@
 				9A8E9A1724D569570033E1C4 /* Assets.xcassets in Resources */,
 				9A63691424D5BD0500B8579B /* AlcoApp.xcdatamodeld in Resources */,
 				9A8192B624D56F09005CE928 /* DrinkDetailedInfoViewController.xib in Resources */,
-				0734E42A24D5F60100F5C71B /* StartViewController.xib in Resources */,
 				9A8192AA24D56E53005CE928 /* DrinkTypeViewController.xib in Resources */,
 				9A8192B024D56EC5005CE928 /* GeneralInformationViewController.xib in Resources */,
 				9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */,
 				9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */,
-				9A8E9A4F24D56BA00033E1C4 /* StartViewController.xib in Resources */,
 				9A63691924D5DCFE00B8579B /* DrinkTableViewCell.xib in Resources */,
 				9A63690824D5792800B8579B /* Amatic-Bold.ttf in Resources */,
 			);

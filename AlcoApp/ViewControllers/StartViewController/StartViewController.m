@@ -7,6 +7,8 @@
 //
 
 #import "StartViewController.h"
+#import "GeneralInformationViewController.h"
+#import "DataManager.h"
 
 static NSString *NAME_CONST=@"Alchometr";
 static NSString *FONT_CONST=@"AmaticSC-Regular";
@@ -16,9 +18,39 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 @interface StartViewController ()
 
+@property (strong, nonatomic) UITextField *ageTextField;
+@property (strong, nonatomic) UITextField *weightTextField;
+@property (strong, nonatomic) UISegmentedControl *sexSegmentControl;
+@property (strong, nonatomic) UIButton *nextButton;
+
+@end
+
+@interface GreetingViewController : StartViewController
+
+@end
+
+@interface PreferencesViewController : StartViewController
+
 @end
 
 @implementation StartViewController
+
+//Ensuring below that the startLoading and cellForRowAtIndexPath method must be implemented by the private subclasses
+- (void)configureButtonText {
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
+
+
+- (instancetype)initWithType:(ViewControllerType)type {
+    self = nil;
+    if (type == Greeting) {
+        self = [[GreetingViewController alloc] init];
+    } else if (type == Preferences) {
+        self = [[PreferencesViewController alloc] init];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,11 +62,11 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     UIStackView *stackView=[self setUpStackView];
     [self.view addSubview:stackView];
     
-    UIButton *nextButton=[self setUpNextButton];
-    [self.view addSubview:nextButton];
+    self.nextButton=[self setUpNextButton];
+    [self.view addSubview:self.nextButton];
     
-    [self creatingConstraints:helloLabel andStackView:stackView andNextButton:nextButton];
-    
+    [self creatingConstraints:helloLabel andStackView:stackView andNextButton:self.nextButton];
+    [self configureButtonText];
     
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -67,15 +99,13 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     stackView.distribution=UIStackViewDistributionEqualSpacing;
     stackView.spacing=35;
     
-    UITextField *ageTextField=[self setUpAgeTextField];
-    UITextField *weightTextField=[self setUpWeightTextField];
-    UISegmentedControl *sexSegmentControl=[self setUpSexSegmentControl];
+    self.ageTextField=[self setUpAgeTextField];
+    self.weightTextField=[self setUpWeightTextField];
+    self.sexSegmentControl=[self setUpSexSegmentControl];
     
-    
-    
-    [stackView addArrangedSubview:ageTextField];
-    [stackView addArrangedSubview:weightTextField];
-    [stackView addArrangedSubview:sexSegmentControl];
+    [stackView addArrangedSubview:self.ageTextField];
+    [stackView addArrangedSubview:self.weightTextField];
+    [stackView addArrangedSubview:self.sexSegmentControl];
     return stackView;
 }
 
@@ -83,7 +113,6 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     UITextField *ageTextField=[UITextField new];
     
 
-    
     ageTextField.borderStyle = UITextBorderStyleRoundedRect;
     ageTextField.clearsOnBeginEditing = YES;
     ageTextField.text = @"Enter your age";
@@ -175,6 +204,37 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     ]];
 }
 
+- (void)nextButtonTaped {
+    
+    NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
+    
+    //get values from textFields
+    NSInteger age = 20;
+    NSInteger weight = 55;
+    
+    [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
+    
+    [self.navigationController pushViewController:[GeneralInformationViewController new] animated:YES];
+ 
+}
+
 
 @end
 
+
+@implementation GreetingViewController
+
+- (void)configureButtonText {
+    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+}
+
+@end
+
+
+@implementation PreferencesViewController
+
+- (void)configureButtonText {
+    [self.nextButton setTitle:@"Update" forState:UIControlStateNormal];
+}
+
+@end
