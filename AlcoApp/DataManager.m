@@ -8,6 +8,7 @@
 
 #import "DataManager.h"
 #import "User+CoreDataProperties.h"
+#import "Drink+CoreDataProperties.h"
 
 @implementation DataManager
 
@@ -44,6 +45,18 @@
         user.weight = weight;
     }];
     [context save: nil];
+}
+
+- (void)addDrink {
+    NSManagedObjectContext *context = [self.persistentContainer newBackgroundContext];
+    Drink *drink = [[Drink alloc] initWithContext:context];
+    [context performBlockAndWait:^{
+        drink.name = @"Beer";
+        drink.date = [NSDate date];
+        drink.alcoholPercent = 8;
+        drink.volume = 0.5;
+      }];
+      [context save: nil];
 }
 
 #pragma mark - Core Data stack
