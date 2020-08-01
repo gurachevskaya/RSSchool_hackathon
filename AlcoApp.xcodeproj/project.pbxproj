@@ -11,8 +11,6 @@
 		9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690124D56FE200B8579B /* UserInfoViewController.xib */; };
 		9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */; };
 		9A63690824D5792800B8579B /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690624D5792800B8579B /* Amatic-Bold.ttf */; };
-		9A63690D24D5A3DA00B8579B /* User+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63690B24D5A3DA00B8579B /* User+CoreDataClass.m */; };
-		9A63690E24D5A3DA00B8579B /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63690C24D5A3DA00B8579B /* User+CoreDataProperties.m */; };
 		9A63691224D5B3B400B8579B /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63691124D5B3B400B8579B /* DataManager.m */; };
 		9A63691424D5BD0500B8579B /* AlcoApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1324D569540033E1C4 /* AlcoApp.xcdatamodeld */; };
 		9A63691824D5DCFE00B8579B /* DrinkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63691624D5DCFE00B8579B /* DrinkTableViewCell.m */; };
@@ -39,10 +37,6 @@
 		9A63690124D56FE200B8579B /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
 		9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
 		9A63690624D5792800B8579B /* Amatic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amatic-Bold.ttf"; sourceTree = "<group>"; };
-		9A63690924D5A3DA00B8579B /* User+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
-		9A63690A24D5A3DA00B8579B /* User+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataClass.h"; sourceTree = "<group>"; };
-		9A63690B24D5A3DA00B8579B /* User+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataClass.m"; sourceTree = "<group>"; };
-		9A63690C24D5A3DA00B8579B /* User+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
 		9A63691024D5B3B400B8579B /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9A63691124D5B3B400B8579B /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9A63691524D5DCFE00B8579B /* DrinkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkTableViewCell.h; sourceTree = "<group>"; };
@@ -129,10 +123,6 @@
 		9A63692224D5E4D800B8579B /* User */ = {
 			isa = PBXGroup;
 			children = (
-				9A63690924D5A3DA00B8579B /* User+CoreDataProperties.h */,
-				9A63690A24D5A3DA00B8579B /* User+CoreDataClass.h */,
-				9A63690B24D5A3DA00B8579B /* User+CoreDataClass.m */,
-				9A63690C24D5A3DA00B8579B /* User+CoreDataProperties.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -322,12 +312,10 @@
 				9A63691F24D5E4BE00B8579B /* Drink+CoreDataClass.m in Sources */,
 				9A63692024D5E4BE00B8579B /* Drink+CoreDataProperties.m in Sources */,
 				9A8192A924D56E53005CE928 /* DrinkTypeViewController.m in Sources */,
-				9A63690D24D5A3DA00B8579B /* User+CoreDataClass.m in Sources */,
 				9A63690224D56FE200B8579B /* UserInfoViewController.m in Sources */,
 				9A8E9A4E24D56BA00033E1C4 /* StartViewController.m in Sources */,
 				9A8E9A0F24D569540033E1C4 /* ViewController.m in Sources */,
 				9A8E9A0924D569540033E1C4 /* AppDelegate.m in Sources */,
-				9A63690E24D5A3DA00B8579B /* User+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
