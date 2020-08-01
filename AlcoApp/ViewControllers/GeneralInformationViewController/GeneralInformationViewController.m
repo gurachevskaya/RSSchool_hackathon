@@ -8,6 +8,7 @@
 
 #import "GeneralInformationViewController.h"
 #import "DrinkTableViewCell.h"
+#import "StartViewController.h"
 
 @interface GeneralInformationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,12 +25,11 @@
     
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
     preferencesButton.tintColor = [UIColor blackColor];
-     self.navigationItem.rightBarButtonItem = preferencesButton;
+    self.navigationItem.rightBarButtonItem = preferencesButton;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-
+    [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     
-     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
-
 }
 
 #pragma mark - UITableViewDataSource
@@ -49,7 +49,9 @@
 #pragma mark - Actions
 
 - (void)openPreferences {
-    
+    StartViewController *preferences = [[StartViewController alloc] initWithType:Preferences];
+    [self presentViewController:preferences animated:YES completion:nil];
+
 }
 
 @end
