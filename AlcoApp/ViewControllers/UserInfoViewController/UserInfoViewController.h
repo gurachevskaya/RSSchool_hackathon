@@ -1,5 +1,5 @@
 //
-//  SceneDelegate.h
+//  UserInfoViewController.h
 //  AlcoApp
 //
 //  Created by Karina on 8/1/20.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) UIWindow * window;
+@interface UserInfoViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
