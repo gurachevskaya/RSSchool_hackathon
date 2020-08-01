@@ -18,6 +18,8 @@
 		9A63691924D5DCFE00B8579B /* DrinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A63691724D5DCFE00B8579B /* DrinkTableViewCell.xib */; };
 		9A63691F24D5E4BE00B8579B /* Drink+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63691D24D5E4BE00B8579B /* Drink+CoreDataClass.m */; };
 		9A63692024D5E4BE00B8579B /* Drink+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63691E24D5E4BE00B8579B /* Drink+CoreDataProperties.m */; };
+		9A63692724D5F55A00B8579B /* User+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63692524D5F55A00B8579B /* User+CoreDataClass.m */; };
+		9A63692824D5F55A00B8579B /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63692624D5F55A00B8579B /* User+CoreDataProperties.m */; };
 		9A8192A924D56E53005CE928 /* DrinkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8192A724D56E53005CE928 /* DrinkTypeViewController.m */; };
 		9A8192AA24D56E53005CE928 /* DrinkTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8192A824D56E53005CE928 /* DrinkTypeViewController.xib */; };
 		9A8192AF24D56EC5005CE928 /* GeneralInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8192AD24D56EC5005CE928 /* GeneralInformationViewController.m */; };
@@ -47,6 +49,10 @@
 		9A63691C24D5E4BE00B8579B /* Drink+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataClass.h"; sourceTree = "<group>"; };
 		9A63691D24D5E4BE00B8579B /* Drink+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Drink+CoreDataClass.m"; sourceTree = "<group>"; };
 		9A63691E24D5E4BE00B8579B /* Drink+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Drink+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9A63692324D5F55A00B8579B /* User+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9A63692424D5F55A00B8579B /* User+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataClass.h"; sourceTree = "<group>"; };
+		9A63692524D5F55A00B8579B /* User+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataClass.m"; sourceTree = "<group>"; };
+		9A63692624D5F55A00B8579B /* User+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
 		9A8192A624D56E53005CE928 /* DrinkTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkTypeViewController.h; sourceTree = "<group>"; };
 		9A8192A724D56E53005CE928 /* DrinkTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkTypeViewController.m; sourceTree = "<group>"; };
 		9A8192A824D56E53005CE928 /* DrinkTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkTypeViewController.xib; sourceTree = "<group>"; };
@@ -123,6 +129,10 @@
 		9A63692224D5E4D800B8579B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				9A63692324D5F55A00B8579B /* User+CoreDataProperties.h */,
+				9A63692424D5F55A00B8579B /* User+CoreDataClass.h */,
+				9A63692524D5F55A00B8579B /* User+CoreDataClass.m */,
+				9A63692624D5F55A00B8579B /* User+CoreDataProperties.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -305,9 +315,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A63692824D5F55A00B8579B /* User+CoreDataProperties.m in Sources */,
 				9A8192B524D56F09005CE928 /* DrinkDetailedInfoViewController.m in Sources */,
 				9A63691224D5B3B400B8579B /* DataManager.m in Sources */,
 				9A63691824D5DCFE00B8579B /* DrinkTableViewCell.m in Sources */,
+				9A63692724D5F55A00B8579B /* User+CoreDataClass.m in Sources */,
 				9A8192AF24D56EC5005CE928 /* GeneralInformationViewController.m in Sources */,
 				9A8E9A1D24D569570033E1C4 /* main.m in Sources */,
 				9A63691F24D5E4BE00B8579B /* Drink+CoreDataClass.m in Sources */,
