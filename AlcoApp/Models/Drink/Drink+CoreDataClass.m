@@ -1,5 +1,5 @@
 //
-//  User+CoreDataClass.m
+//  Drink+CoreDataClass.m
 //  AlcoApp
 //
 //  Created by Karina on 8/1/20.
@@ -7,8 +7,8 @@
 //
 //
 
-#import "User+CoreDataClass.h"
+#import "Drink+CoreDataClass.h"
 
-@implementation User
+@implementation Drink
 
 @end

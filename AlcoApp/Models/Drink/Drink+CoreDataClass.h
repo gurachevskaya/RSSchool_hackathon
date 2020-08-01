@@ -1,5 +1,5 @@
 //
-//  User+CoreDataClass.h
+//  Drink+CoreDataClass.h
 //  AlcoApp
 //
 //  Created by Karina on 8/1/20.
@@ -12,10 +12,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface User : NSManagedObject
+@interface Drink : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "User+CoreDataProperties.h"
+#import "Drink+CoreDataProperties.h"
