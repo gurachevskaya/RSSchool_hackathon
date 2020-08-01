@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "StartViewController.h"
+#import "DataManager.h"
+#import "User+CoreDataProperties.h"
 
 @interface AppDelegate ()
 
@@ -22,54 +24,31 @@
     StartViewController *vc = [[StartViewController alloc] initWithNibName:@"StartViewController" bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];;
+    [self.window makeKeyAndVisible];
+    
+    
+/*
+    [[DataManager sharedManager] configureUserWithAge:18 sex:@"male" weight:55];
+    [[DataManager sharedManager] configureUserWithAge:20 sex:@"female" weight:55];
+
+    NSManagedObjectContext *viewContext = [DataManager sharedManager].newBackgroundContext;
+    NSFetchRequest *fetchRequest = [User fetchRequest];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+    NSArray *resultArray = [viewContext executeFetchRequest:fetchRequest error:nil];
+
+    NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[User fetchRequest] error:nil]);
+    
+    for (User *user in resultArray) {
+        NSLog(@"age: %hd sex: %@ weight: %hd", user.age, user.sex, user.weight);
+    }
+ */
+
     return YES;
     
 }
 
-#pragma mark - Core Data stack
-
-@synthesize persistentContainer = _persistentContainer;
-
-- (NSPersistentContainer *)persistentContainer {
-    // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
-    @synchronized (self) {
-        if (_persistentContainer == nil) {
-            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"AlcoApp"];
-            [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
-                if (error != nil) {
-                    // Replace this implementation with code to handle the error appropriately.
-                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    
-                    /*
-                     Typical reasons for an error here include:
-                     * The parent directory does not exist, cannot be created, or disallows writing.
-                     * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                     * The device is out of space.
-                     * The store could not be migrated to the current model version.
-                     Check the error message to determine what the actual problem was.
-                    */
-                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-                    abort();
-                }
-            }];
-        }
-    }
-    
-    return _persistentContainer;
-}
-
-#pragma mark - Core Data Saving support
-
-- (void)saveContext {
-    NSManagedObjectContext *context = self.persistentContainer.viewContext;
-    NSError *error = nil;
-    if ([context hasChanges] && ![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+     [[DataManager sharedManager] saveContext];
 }
 
 @end
