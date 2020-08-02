@@ -37,12 +37,15 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 @implementation StartViewController
 
-//Ensuring below that the startLoading and cellForRowAtIndexPath method must be implemented by the private subclasses
+//Ensuring below that the configureButtonText and configureLabelText method must be implemented by the private subclasses
 - (void)configureButtonText {
     [NSException raise:NSInternalInconsistencyException
                 format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
-
+-(void)configureLabelText{
+    [NSException raise:NSInternalInconsistencyException
+    format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
 
 - (instancetype)initWithType:(ViewControllerType)type {
     self = nil;
@@ -69,6 +72,9 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
  [self creatingConstraintsVertical:self.helloLabel andStackView:self.stackView andNextButton:self.nextButton];
     [self configureButtonText];
+    [self configureLabelText];
+    
+    [self hideWhenTappedAround];
     
     [self hideWhenTappedAround];
     
@@ -88,8 +94,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     CGFloat screenWidth=screenRect.size.width;
     
     helloLabel.textAlignment=NSTextAlignmentCenter;
-    helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
-    helloLabel.text=NAME_CONST;
+    //helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
+    //helloLabel.text=NAME_CONST;
     helloLabel.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
     [helloLabel.widthAnchor constraintEqualToConstant:screenWidth],
@@ -120,7 +126,10 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
     ageTextField.borderStyle = UITextBorderStyleRoundedRect;
     ageTextField.clearsOnBeginEditing = YES;
-    ageTextField.text = @"Enter your age";
+    ageTextField.placeholder = @"Enter your age";
+    
+    
+    ageTextField.keyboardType =UIKeyboardTypeNumberPad;
     
     ageTextField.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
@@ -130,6 +139,32 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     return ageTextField;
 }
+
+
+
+
+-(UITextField *) setUpWeightTextField{
+    
+    UITextField *weightTextField=[UITextField new];
+    
+    weightTextField.borderStyle = UITextBorderStyleRoundedRect;
+    weightTextField.clearsOnBeginEditing = YES;
+    weightTextField.placeholder = @"Enter your weight";
+    weightTextField.keyboardType =UIKeyboardTypeNumberPad;
+    
+    
+    weightTextField.translatesAutoresizingMaskIntoConstraints=NO;
+    [NSLayoutConstraint activateConstraints:@[
+    [weightTextField.widthAnchor constraintEqualToConstant:TEXT_FIELD_WIDTH_CONST],
+    [weightTextField.heightAnchor constraintEqualToConstant:TEXT_FIELD_HEIGHT_CONST]
+    ]];
+    
+    
+    
+    return weightTextField;
+    
+}
+
 -(UISegmentedControl *) setUpSexSegmentControl{
     
     UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Male",@"Female"]];
@@ -155,7 +190,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     nextButton.layer.cornerRadius = 20;
     
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+   // [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     //nextButton.titleLabel.font=[UIFont systemFontOfSize:20 weight:UIFontWeightMedium];
     
     [nextButton addTarget:self action:@selector(nextButtonTaped) forControlEvents:UIControlEventTouchUpInside];
@@ -163,24 +198,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     return nextButton;
 }
 
--(UITextField *) setUpWeightTextField{
-    
-    UITextField *weightTextField=[UITextField new];
-    
-    weightTextField.borderStyle = UITextBorderStyleRoundedRect;
-    weightTextField.clearsOnBeginEditing = YES;
-    weightTextField.text = @"Enter your weight";
-    
-    weightTextField.translatesAutoresizingMaskIntoConstraints=NO;
-    [NSLayoutConstraint activateConstraints:@[
-    [weightTextField.widthAnchor constraintEqualToConstant:TEXT_FIELD_WIDTH_CONST],
-    [weightTextField.heightAnchor constraintEqualToConstant:TEXT_FIELD_HEIGHT_CONST]
-    
-    ]];
-    
-    return weightTextField;
-    
-}
+
 #pragma mark - CreatingOfConstraints
 
 -(void)creatingConstraintsVertical:(UILabel *) helloLabel andStackView:(UIStackView *)stackView andNextButton: (UIButton *) nextButton{
@@ -228,9 +246,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
     
-    //get values from textFields
-    NSInteger age = 20;
-    NSInteger weight = 55;
+    NSInteger age = [self.ageTextField.text intValue];
+    NSInteger weight =[self.weightTextField.text intValue];
     
     [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
     
@@ -261,6 +278,12 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 - (void)configureButtonText {
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    
+}
+
+-(void)configureLabelText{
+    self.helloLabel.text=@"Hello! ";
+    self.helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
 }
 
 @end
@@ -270,6 +293,12 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 - (void)configureButtonText {
     [self.nextButton setTitle:@"Update" forState:UIControlStateNormal];
+    
 }
 
+-(void)configureLabelText{
+    self.helloLabel.text=@"Info about me";
+    self.helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
+}
+//comment for git
 @end
