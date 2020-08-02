@@ -22,6 +22,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 @property (strong, nonatomic) UITextField *weightTextField;
 @property (strong, nonatomic) UISegmentedControl *sexSegmentControl;
 @property (strong, nonatomic) UIButton *nextButton;
+@property(assign,nonatomic) NSString *weightInt;
+@property(assign,nonatomic) NSInteger *ageInt;
 
 @end
 
@@ -67,6 +69,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     [self creatingConstraints:helloLabel andStackView:stackView andNextButton:self.nextButton];
     [self configureButtonText];
+    
+    [self hideWhenTappedAround];
     
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -115,7 +119,10 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
     ageTextField.borderStyle = UITextBorderStyleRoundedRect;
     ageTextField.clearsOnBeginEditing = YES;
-    ageTextField.text = @"Enter your age";
+    ageTextField.placeholder = @"Enter your age";
+    
+    
+    ageTextField.keyboardType =UIKeyboardTypeNumberPad;
     
     ageTextField.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
@@ -133,14 +140,17 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     weightTextField.borderStyle = UITextBorderStyleRoundedRect;
     weightTextField.clearsOnBeginEditing = YES;
-    weightTextField.text = @"Enter your weight";
+    weightTextField.placeholder = @"Enter your weight";
+    weightTextField.keyboardType =UIKeyboardTypeNumberPad;
+    
     
     weightTextField.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
     [weightTextField.widthAnchor constraintEqualToConstant:TEXT_FIELD_WIDTH_CONST],
     [weightTextField.heightAnchor constraintEqualToConstant:TEXT_FIELD_HEIGHT_CONST]
-    
     ]];
+    
+    
     
     return weightTextField;
     
@@ -157,17 +167,10 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     segmentControl.layer.cornerRadius=70;
     
     segmentControl.selectedSegmentIndex=0;
-    [segmentControl addTarget:self action:@selector(segmentControlValueChanded:) forControlEvents:UIControlEventValueChanged];
+    
     return segmentControl;
 }
--(void) segmentControlValueChanded:(UISegmentedControl *) segmentControl{
-    if(segmentControl.selectedSegmentIndex==0){
-        //then male
-    }
-    else{
-        //female
-    }
-}
+
 -(UIButton *)setUpNextButton{
     UIButton *nextButton=[UIButton new];
     nextButton.translatesAutoresizingMaskIntoConstraints=NO;
@@ -209,8 +212,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
     
     //get values from textFields
-    NSInteger age = 20;
-    NSInteger weight = 55;
+   // NSInteger age = 20;
+   // NSInteger weight = 55;
     
     [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
     
@@ -218,6 +221,15 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
  
 }
 
+-(void)hideWhenTappedAround{
+    UITapGestureRecognizer *gesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+    [self.view addGestureRecognizer:gesture];
+}
+
+
+-(void) hide{
+    [self.view endEditing:YES];
+}
 
 @end
 
@@ -228,6 +240,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
 }
 
+
 @end
 
 
@@ -236,5 +249,5 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 - (void)configureButtonText {
     [self.nextButton setTitle:@"Update" forState:UIControlStateNormal];
 }
-
+//comment for git
 @end
