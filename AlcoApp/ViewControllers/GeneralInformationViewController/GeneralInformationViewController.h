@@ -10,6 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, Behaviour) {
+    SOBER, ALMOST_NORMAL, EUPHORIC, DISINHIBITIONS, EXPRESSIVENESS, STUPOR, UNCONSCIOUS, BLACKOUT, DEAD
+};
+
+
 @interface GeneralInformationViewController : UIViewController
 
 @end

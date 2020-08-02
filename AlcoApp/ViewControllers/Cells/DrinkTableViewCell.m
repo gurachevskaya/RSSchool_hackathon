@@ -8,17 +8,19 @@
 
 #import "DrinkTableViewCell.h"
 
+
+@interface DrinkTableViewCell ()
+
+@end
+
+
 @implementation DrinkTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.layer.cornerRadius = 30;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
 
 @end
