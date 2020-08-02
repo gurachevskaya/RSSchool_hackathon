@@ -29,13 +29,13 @@
     NSArray *resultArray = [viewContext executeFetchRequest:fetchRequest error:nil];
     UINavigationController *navigationController;
     
-    if (resultArray.count == 0) {
+   // if (resultArray.count == 0) {
         StartViewController *vc = [[StartViewController alloc] initWithType:Greeting];
         navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    } else {
-        GeneralInformationViewController *vc = [[GeneralInformationViewController alloc]initWithNibName:@"GeneralInformationViewController" bundle:nil];
-        navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    }
+//    } else {
+//        GeneralInformationViewController *vc = [[GeneralInformationViewController alloc]initWithNibName:@"GeneralInformationViewController" bundle:nil];
+//        navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+//    }
 
     self.window.rootViewController = navigationController;
     
