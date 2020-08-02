@@ -34,6 +34,7 @@
 
 static float promilles = 0.0;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,12 +45,13 @@ static float promilles = 0.0;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     
-    promilles = [self calculatePromilles];
-    
+    [self calculatePromilles];
+    self.timeProgress = promilles/0.15 * 60 * 60;
+    [self startTimer];
+
     self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", promilles];
     
     [self updateStateLabelText];
-//    self.timeProgress = 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,7 +62,6 @@ static float promilles = 0.0;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 5;
     return self.frc.fetchedObjects.count;;
 }
 
@@ -77,10 +78,6 @@ static float promilles = 0.0;
 //-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 //    return @"History";
 //}
-
-
-
-
 
 #pragma mark - UITableViewDelegate
 
@@ -105,6 +102,7 @@ static float promilles = 0.0;
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
     preferencesButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = preferencesButton;
+    self.navigationItem.leftBarButtonItem = nil;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
 }
@@ -137,8 +135,13 @@ static float promilles = 0.0;
 - (void)handleTimer {
     self.timeProgress -= 1.0;
     [self.timerLabel setText:[NSString timeFormatted:self.timeProgress]];
+    promilles = 0;
+    
+    [self calculatePromilles];
+    [self updateStateLabelText];
+    
     if (self.timeProgress == 0) {
-        
+        [self stopTimer];
     }
 }
 
@@ -183,13 +186,15 @@ static float promilles = 0.0;
             break;
         case DEAD:
             self.stateLabel.text = @"You died, Congrats!";
+            [self stopTimer];
+            self.timerLabel.text = @"00:00";
             break;
     }
 }
 
-- (float)calculatePromilles {
+- (void)calculatePromilles {
     //c = A/(m * r), where A - amount of ethanol in ml, m - weight in kg, r - Widmark coefficient
-//  -0.15/60 - every minute
+    //  -0.15/60 - every minute
     
     NSManagedObjectContext *context = [DataManager sharedManager].newBackgroundContext;
     NSFetchRequest *userFetchRequest = [User fetchRequest];
@@ -200,33 +205,30 @@ static float promilles = 0.0;
     NSInteger m = user.weight;
     NSString *sex = user.sex;
     
+    float r;
+         if ([sex isEqualToString:@"Male"]) {
+             r = 0.7;
+         } else {
+             r = 0.6;
+         }
     NSArray *drinksArray = [context executeFetchRequest:drinkFetchRequest error:nil];
     
-    NSInteger A = 0;
     for (Drink *drink in drinksArray) {
         NSDate *currentDate = [NSDate date];
         NSDate *dateOfDrink = drink.date;
         NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:dateOfDrink];
         int minutesBerween = secondsBetween / 60;
-        NSInteger ethanol = (drink.volume * drink.alcoholPercent / 100) - 0.15/60 * minutesBerween;
-        if (ethanol > 0) {
-        A = A + ethanol;
+        NSInteger ethanol = (drink.volume * drink.alcoholPercent / 100);
+        float prom = ethanol / (m * r) - 0.15/60 * minutesBerween;
+
+        if (prom > 0) {
+        promilles = promilles + prom;
         }
     }
-
-//    drink.alcoholPercent;
-//    drink.volume;
-//    drink.date;
-    
-    float r;
-      if ([sex isEqualToString:@"Male"]) {
-          r = 0.7;
-      } else {
-          r = 0.6;
-      }
-    
-    float c = A / (m * r);
-    return c;
 }
+
+//- (void)reCalculatePromilles {
+//    promilles =  self.timeProgress / 60 / 60 * 0.15 ;
+//}
 
 @end

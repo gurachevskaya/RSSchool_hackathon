@@ -39,10 +39,6 @@
     }
 
     self.window.rootViewController = navigationController;
-    
-    [UINavigationBar appearance].tintColor = [UIColor blackColor];
-    //    [UINavigationBar appearance].backgroundColor = [UIColor colorWithRed:224.0/255.0 green:129.0/255.0 blue:145.0/255.0 alpha:1.0];
-    
     [self.window makeKeyAndVisible];
     
     

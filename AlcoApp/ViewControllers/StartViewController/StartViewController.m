@@ -215,11 +215,10 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 - (void)nextButtonTaped {
     
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
-    
     NSInteger age = [self.ageTextField.text intValue];
     NSInteger weight =[self.weightTextField.text intValue];
     
-//    [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
+    [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
     
     [self.navigationController pushViewController:[GeneralInformationViewController new] animated:YES];
  
