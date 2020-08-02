@@ -10,7 +10,20 @@
 
 //NS_ASSUME_NONNULL_BEGIN
 
-@interface StartViewController : UIViewController
+typedef NS_ENUM(NSInteger, ViewControllerType) {
+  Greeting,
+  Preferences
+};
+
+@protocol UIConfiguringProtocol
+
+- (void)configureButtonText;
+
+@end
+
+@interface StartViewController : UIViewController <UIConfiguringProtocol>
+
+- (instancetype)initWithType:(ViewControllerType)type;
 
 @end
 

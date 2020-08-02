@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  DrinkTableViewCell.h
 //  AlcoApp
 //
 //  Created by Karina on 8/1/20.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (nonatomic, strong) UIWindow *window;
+@interface DrinkTableViewCell : UITableViewCell
 
 @end
 
+NS_ASSUME_NONNULL_END

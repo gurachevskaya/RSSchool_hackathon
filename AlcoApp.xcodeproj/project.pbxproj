@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0734E42A24D5F60100F5C71B /* StartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0734E42924D5F60100F5C71B /* StartViewController.xib */; };
 		9A63690224D56FE200B8579B /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63690024D56FE200B8579B /* UserInfoViewController.m */; };
 		9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690124D56FE200B8579B /* UserInfoViewController.xib */; };
 		9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */; };
 		9A63690824D5792800B8579B /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A63690624D5792800B8579B /* Amatic-Bold.ttf */; };
+		9A63691224D5B3B400B8579B /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63691124D5B3B400B8579B /* DataManager.m */; };
+		9A63691424D5BD0500B8579B /* AlcoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1324D569540033E1C4 /* AlcoApp.xcdatamodeld */; };
+		9A63691824D5DCFE00B8579B /* DrinkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63691624D5DCFE00B8579B /* DrinkTableViewCell.m */; };
+		9A63691924D5DCFE00B8579B /* DrinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A63691724D5DCFE00B8579B /* DrinkTableViewCell.xib */; };
+		9A63693024D6B47700B8579B /* NSString+TimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63692F24D6B47700B8579B /* NSString+TimeFormatter.m */; };
+		9A63693424D6BCDC00B8579B /* UIColor+ ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63693324D6BCDC00B8579B /* UIColor+ ProjectColors.m */; };
 		9A8192A924D56E53005CE928 /* DrinkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8192A724D56E53005CE928 /* DrinkTypeViewController.m */; };
 		9A8192AA24D56E53005CE928 /* DrinkTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8192A824D56E53005CE928 /* DrinkTypeViewController.xib */; };
 		9A8192AF24D56EC5005CE928 /* GeneralInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8192AD24D56EC5005CE928 /* GeneralInformationViewController.m */; };
@@ -20,20 +25,34 @@
 		9A8192B624D56F09005CE928 /* DrinkDetailedInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8192B424D56F09005CE928 /* DrinkDetailedInfoViewController.xib */; };
 		9A8E9A0924D569540033E1C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A0824D569540033E1C4 /* AppDelegate.m */; };
 		9A8E9A0F24D569540033E1C4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A0E24D569540033E1C4 /* ViewController.m */; };
-		9A8E9A1224D569540033E1C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1024D569540033E1C4 /* Main.storyboard */; };
-		9A8E9A1524D569540033E1C4 /* AlcoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1324D569540033E1C4 /* AlcoApp.xcdatamodeld */; };
 		9A8E9A1724D569570033E1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1624D569570033E1C4 /* Assets.xcassets */; };
 		9A8E9A1D24D569570033E1C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1C24D569570033E1C4 /* main.m */; };
 		9A8E9A4E24D56BA00033E1C4 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A4C24D56BA00033E1C4 /* StartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0734E42924D5F60100F5C71B /* StartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewController.xib; sourceTree = "<group>"; };
 		9A6368FF24D56FE200B8579B /* UserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		9A63690024D56FE200B8579B /* UserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		9A63690124D56FE200B8579B /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
 		9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
 		9A63690624D5792800B8579B /* Amatic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amatic-Bold.ttf"; sourceTree = "<group>"; };
+		9A63691024D5B3B400B8579B /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		9A63691124D5B3B400B8579B /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		9A63691524D5DCFE00B8579B /* DrinkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkTableViewCell.h; sourceTree = "<group>"; };
+		9A63691624D5DCFE00B8579B /* DrinkTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkTableViewCell.m; sourceTree = "<group>"; };
+		9A63691724D5DCFE00B8579B /* DrinkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkTableViewCell.xib; sourceTree = "<group>"; };
+		9A63691B24D5E4BE00B8579B /* Drink+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9A63691C24D5E4BE00B8579B /* Drink+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataClass.h"; sourceTree = "<group>"; };
+		9A63691D24D5E4BE00B8579B /* Drink+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Drink+CoreDataClass.m"; sourceTree = "<group>"; };
+		9A63691E24D5E4BE00B8579B /* Drink+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Drink+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9A63692324D5F55A00B8579B /* User+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9A63692424D5F55A00B8579B /* User+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataClass.h"; sourceTree = "<group>"; };
+		9A63692524D5F55A00B8579B /* User+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataClass.m"; sourceTree = "<group>"; };
+		9A63692624D5F55A00B8579B /* User+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9A63692E24D6B47700B8579B /* NSString+TimeFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormatter.h"; sourceTree = "<group>"; };
+		9A63692F24D6B47700B8579B /* NSString+TimeFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeFormatter.m"; sourceTree = "<group>"; };
+		9A63693224D6BCDC00B8579B /* UIColor+ProjectColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ProjectColors.h"; sourceTree = "<group>"; };
+		9A63693324D6BCDC00B8579B /* UIColor+ ProjectColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ ProjectColors.m"; sourceTree = "<group>"; };
 		9A8192A624D56E53005CE928 /* DrinkTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkTypeViewController.h; sourceTree = "<group>"; };
 		9A8192A724D56E53005CE928 /* DrinkTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkTypeViewController.m; sourceTree = "<group>"; };
 		9A8192A824D56E53005CE928 /* DrinkTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkTypeViewController.xib; sourceTree = "<group>"; };
@@ -75,6 +94,58 @@
 				9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9A63690F24D5A3FA00B8579B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A63692224D5E4D800B8579B /* User */,
+				9A63692124D5E4C700B8579B /* Drink */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A63691A24D5DD0100B8579B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9A63691524D5DCFE00B8579B /* DrinkTableViewCell.h */,
+				9A63691624D5DCFE00B8579B /* DrinkTableViewCell.m */,
+				9A63691724D5DCFE00B8579B /* DrinkTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9A63692124D5E4C700B8579B /* Drink */ = {
+			isa = PBXGroup;
+			children = (
+				9A63691B24D5E4BE00B8579B /* Drink+CoreDataProperties.h */,
+				9A63691C24D5E4BE00B8579B /* Drink+CoreDataClass.h */,
+				9A63691D24D5E4BE00B8579B /* Drink+CoreDataClass.m */,
+				9A63691E24D5E4BE00B8579B /* Drink+CoreDataProperties.m */,
+			);
+			path = Drink;
+			sourceTree = "<group>";
+		};
+		9A63692224D5E4D800B8579B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				9A63692324D5F55A00B8579B /* User+CoreDataProperties.h */,
+				9A63692424D5F55A00B8579B /* User+CoreDataClass.h */,
+				9A63692524D5F55A00B8579B /* User+CoreDataClass.m */,
+				9A63692624D5F55A00B8579B /* User+CoreDataProperties.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		9A63693124D6B47E00B8579B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9A63693224D6BCDC00B8579B /* UIColor+ProjectColors.h */,
+				9A63693324D6BCDC00B8579B /* UIColor+ ProjectColors.m */,
+				9A63692E24D6B47700B8579B /* NSString+TimeFormatter.h */,
+				9A63692F24D6B47700B8579B /* NSString+TimeFormatter.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		9A8192A524D56D74005CE928 /* UserInfoViewController */ = {
@@ -139,6 +210,8 @@
 				9A8E9A0724D569540033E1C4 /* AppDelegate.h */,
 				9A8E9A0824D569540033E1C4 /* AppDelegate.m */,
 				9A8E9A5024D56BA40033E1C4 /* ViewControllers */,
+				9A63690F24D5A3FA00B8579B /* Models */,
+				9A63693124D6B47E00B8579B /* Categories */,
 				9A8E9A0D24D569540033E1C4 /* ViewController.h */,
 				9A8E9A0E24D569540033E1C4 /* ViewController.m */,
 				9A8E9A1024D569540033E1C4 /* Main.storyboard */,
@@ -146,6 +219,8 @@
 				9A8E9A1B24D569570033E1C4 /* Info.plist */,
 				9A8E9A1C24D569570033E1C4 /* main.m */,
 				9A8E9A1324D569540033E1C4 /* AlcoApp.xcdatamodeld */,
+				9A63691024D5B3B400B8579B /* DataManager.h */,
+				9A63691124D5B3B400B8579B /* DataManager.m */,
 			);
 			path = AlcoApp;
 			sourceTree = "<group>";
@@ -158,6 +233,7 @@
 				9A8192AB24D56E58005CE928 /* DrinkTypeViewController */,
 				9A8192B724D56F0D005CE928 /* DrinkDetailedInfoViewController */,
 				9A8192A524D56D74005CE928 /* UserInfoViewController */,
+				9A63691A24D5DD0100B8579B /* Cells */,
 				9A63690424D578EB00B8579B /* Fonts */,
 			);
 			path = ViewControllers;
@@ -168,7 +244,6 @@
 			children = (
 				9A8E9A4B24D56BA00033E1C4 /* StartViewController.h */,
 				9A8E9A4C24D56BA00033E1C4 /* StartViewController.m */,
-				0734E42924D5F60100F5C71B /* StartViewController.xib */,
 			);
 			path = StartViewController;
 			sourceTree = "<group>";
@@ -232,12 +307,11 @@
 			files = (
 				9A8E9A1724D569570033E1C4 /* Assets.xcassets in Resources */,
 				9A8192B624D56F09005CE928 /* DrinkDetailedInfoViewController.xib in Resources */,
-				0734E42A24D5F60100F5C71B /* StartViewController.xib in Resources */,
 				9A8192AA24D56E53005CE928 /* DrinkTypeViewController.xib in Resources */,
 				9A8192B024D56EC5005CE928 /* GeneralInformationViewController.xib in Resources */,
 				9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */,
-				9A8E9A1224D569540033E1C4 /* Main.storyboard in Resources */,
 				9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */,
+				9A63691924D5DCFE00B8579B /* DrinkTableViewCell.xib in Resources */,
 				9A63690824D5792800B8579B /* Amatic-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,13 +324,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8192B524D56F09005CE928 /* DrinkDetailedInfoViewController.m in Sources */,
+				9A63691224D5B3B400B8579B /* DataManager.m in Sources */,
+				9A63691824D5DCFE00B8579B /* DrinkTableViewCell.m in Sources */,
 				9A8192AF24D56EC5005CE928 /* GeneralInformationViewController.m in Sources */,
 				9A8E9A1D24D569570033E1C4 /* main.m in Sources */,
+				9A63693424D6BCDC00B8579B /* UIColor+ ProjectColors.m in Sources */,
 				9A8192A924D56E53005CE928 /* DrinkTypeViewController.m in Sources */,
-				9A8E9A1524D569540033E1C4 /* AlcoApp.xcdatamodeld in Sources */,
 				9A63690224D56FE200B8579B /* UserInfoViewController.m in Sources */,
 				9A8E9A4E24D56BA00033E1C4 /* StartViewController.m in Sources */,
+				9A63693024D6B47700B8579B /* NSString+TimeFormatter.m in Sources */,
 				9A8E9A0F24D569540033E1C4 /* ViewController.m in Sources */,
+				9A63691424D5BD0500B8579B /* AlcoApp.xcdatamodeld in Sources */,
 				9A8E9A0924D569540033E1C4 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
