@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,33 +18,62 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-sO-zPC">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
-                    <color key="backgroundColor" red="0.87445142638259732" green="0.87445142638259732" blue="0.87445142638259732" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-RD-YNz">
+                            <rect key="frame" x="134.5" y="37" width="145.5" height="69.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="58"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are very drunk!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3c-2e-nsb">
+                            <rect key="frame" x="130" y="106.5" width="154.5" height="21"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is 0.05 of alcohol in your blood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OZ-hv-di0">
+                            <rect key="frame" x="58.5" y="135.5" width="297.5" height="21"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="PALE MAGENTA-PINK"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="150" id="qEo-1v-rA6"/>
+                        <constraint firstItem="M3c-2e-nsb" firstAttribute="top" secondItem="4xO-RD-YNz" secondAttribute="bottom" id="F5g-SQ-tsr"/>
+                        <constraint firstItem="3OZ-hv-di0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ozO-sO-zPC" secondAttribute="leading" constant="10" id="FLP-6f-3fv"/>
+                        <constraint firstItem="4xO-RD-YNz" firstAttribute="top" secondItem="ozO-sO-zPC" secondAttribute="top" constant="37" id="FrZ-d8-lSw"/>
+                        <constraint firstItem="3OZ-hv-di0" firstAttribute="top" secondItem="M3c-2e-nsb" secondAttribute="bottom" constant="8" id="M8O-QZ-TcE"/>
+                        <constraint firstItem="M3c-2e-nsb" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="Yqg-3s-eQA"/>
+                        <constraint firstItem="4xO-RD-YNz" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="k1B-wX-k57"/>
+                        <constraint firstAttribute="height" constant="200" id="qEo-1v-rA6"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3OZ-hv-di0" secondAttribute="trailing" constant="10" id="tE4-MN-S0Q"/>
+                        <constraint firstItem="3OZ-hv-di0" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="vCj-gw-vHu"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="po7-GB-AXz">
-                    <rect key="frame" x="0.0" y="150" width="414" height="624"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="40" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="po7-GB-AXz">
+                    <rect key="frame" x="0.0" y="244" width="414" height="618"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <color key="sectionIndexBackgroundColor" red="0.89092243020304562" green="0.89092243020304562" blue="0.89092243020304562" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="sectionIndexBackgroundColor" red="0.89092243019999995" green="0.89092243019999995" blue="0.89092243019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="TSw-mW-hdV"/>
                         <outlet property="delegate" destination="-1" id="hgL-CK-rXX"/>
                     </connections>
                 </tableView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfq-JU-kMG">
-                    <rect key="frame" x="354" y="125" width="50" height="50"/>
-                    <color key="backgroundColor" red="0.8784313725490196" green="0.50588235294117645" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="344" y="209" width="60" height="60"/>
+                    <color key="backgroundColor" name="DARK LAVENDER"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="QBd-df-blX"/>
-                        <constraint firstAttribute="width" constant="50" id="Z9v-XQ-0Mw"/>
+                        <constraint firstAttribute="height" constant="60" id="QBd-df-blX"/>
+                        <constraint firstAttribute="width" constant="60" id="Z9v-XQ-0Mw"/>
                     </constraints>
-                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                     <state key="normal" title="Button" image="plus">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -61,12 +91,18 @@
                 <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="tfq-JU-kMG" secondAttribute="bottom" constant="-25" id="bZ9-CC-1Zu"/>
                 <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="ozO-sO-zPC" secondAttribute="bottom" id="t7z-Sa-6qF"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
         </view>
     </objects>
     <resources>
         <image name="plus" width="64" height="64"/>
+        <namedColor name="DARK LAVENDER">
+            <color red="0.396078431372549" green="0.28627450980392155" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PALE MAGENTA-PINK">
+            <color red="1" green="0.58039215686274503" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
