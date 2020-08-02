@@ -24,6 +24,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 @property (strong, nonatomic) UIButton *nextButton;
 @property(assign,nonatomic) NSString *weightInt;
 @property(assign,nonatomic) NSInteger *ageInt;
+@property(strong,nonatomic) UILabel *helloLabel;
 
 @end
 
@@ -37,12 +38,15 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 @implementation StartViewController
 
-//Ensuring below that the startLoading and cellForRowAtIndexPath method must be implemented by the private subclasses
+//Ensuring below that the configureButtonText and configureLabelText method must be implemented by the private subclasses
 - (void)configureButtonText {
     [NSException raise:NSInternalInconsistencyException
                 format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
-
+-(void)configureLabelText{
+    [NSException raise:NSInternalInconsistencyException
+    format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
 
 - (instancetype)initWithType:(ViewControllerType)type {
     self = nil;
@@ -58,8 +62,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor systemPinkColor];
     
-    UILabel *helloLabel=[self setUpHelloLabel];
-    [self.view addSubview:helloLabel];
+    self.helloLabel=[self setUpHelloLabel];
+    [self.view addSubview:self.helloLabel];
     
     UIStackView *stackView=[self setUpStackView];
     [self.view addSubview:stackView];
@@ -67,8 +71,9 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     self.nextButton=[self setUpNextButton];
     [self.view addSubview:self.nextButton];
     
-    [self creatingConstraints:helloLabel andStackView:stackView andNextButton:self.nextButton];
+    [self creatingConstraints:self.helloLabel andStackView:stackView andNextButton:self.nextButton];
     [self configureButtonText];
+    [self configureLabelText];
     
     [self hideWhenTappedAround];
     
@@ -86,8 +91,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     CGFloat screenWidth=screenRect.size.width;
     
     helloLabel.textAlignment=NSTextAlignmentCenter;
-    helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
-    helloLabel.text=NAME_CONST;
+    //helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
+    //helloLabel.text=NAME_CONST;
     helloLabel.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
     [helloLabel.widthAnchor constraintEqualToConstant:screenWidth],
@@ -180,7 +185,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     nextButton.layer.cornerRadius = 20;
     
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+   // [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     //nextButton.titleLabel.font=[UIFont systemFontOfSize:20 weight:UIFontWeightMedium];
     
     [nextButton addTarget:self action:@selector(nextButtonTaped) forControlEvents:UIControlEventTouchUpInside];
@@ -211,7 +216,6 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
     
-    //get values from textFields
     NSInteger age = [self.ageTextField.text intValue];
     NSInteger weight =[self.weightTextField.text intValue];
     
@@ -238,8 +242,13 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 - (void)configureButtonText {
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    
 }
 
+-(void)configureLabelText{
+    self.helloLabel.text=@"Hello! ";
+    self.helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
+}
 
 @end
 
@@ -248,6 +257,12 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 - (void)configureButtonText {
     [self.nextButton setTitle:@"Update" forState:UIControlStateNormal];
+    
+}
+
+-(void)configureLabelText{
+    self.helloLabel.text=@"Info about me";
+    self.helloLabel.font=[UIFont fontWithName:FONT_CONST size:55];
 }
 //comment for git
 @end
