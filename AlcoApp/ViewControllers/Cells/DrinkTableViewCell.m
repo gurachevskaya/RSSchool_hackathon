@@ -22,5 +22,19 @@
 }
 
 
+- (void)configureWithDrink:(Drink *)drink {
+    self.drinkNameLabel.text = drink.name;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString *dateString = [formatter stringFromDate:drink.date];
+    
+    self.timeLabel.text = dateString;
+    
+    self.volumeLabel.text = [NSString stringWithFormat:@"%hd ml",drink.volume];
+    
+}
+
+
 
 @end

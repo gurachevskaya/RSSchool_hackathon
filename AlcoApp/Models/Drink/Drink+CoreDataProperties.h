@@ -2,7 +2,7 @@
 //  Drink+CoreDataProperties.h
 //  AlcoApp
 //
-//  Created by Karina on 8/1/20.
+//  Created by Karina on 8/2/20.
 //  Copyright © 2020 Karina. All rights reserved.
 //
 //
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int16_t alcoholPercent;
 @property (nullable, nonatomic, copy) NSDate *date;
 @property (nullable, nonatomic, copy) NSString *name;
-@property (nonatomic) float volume;
+@property (nonatomic) int16_t volume;
 
 @end
 

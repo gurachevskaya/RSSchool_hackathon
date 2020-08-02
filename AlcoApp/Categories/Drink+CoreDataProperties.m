@@ -2,7 +2,7 @@
 //  Drink+CoreDataProperties.m
 //  AlcoApp
 //
-//  Created by Karina on 8/2/20.
+//  Created by Karina on 8/1/20.
 //  Copyright © 2020 Karina. All rights reserved.
 //
 //
@@ -13,8 +13,8 @@
 
 + (NSFetchRequest<Drink *> *)fetchRequest {
     NSFetchRequest<Drink *> *request = [NSFetchRequest fetchRequestWithEntityName:@"Drink"];
-       request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-       return request;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    return request;
 }
 
 @dynamic alcoholPercent;

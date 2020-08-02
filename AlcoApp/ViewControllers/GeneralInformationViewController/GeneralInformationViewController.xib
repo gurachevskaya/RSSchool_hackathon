@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-sO-zPC">
-                    <rect key="frame" x="0.0" y="44" width="414" height="150"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="160"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-RD-YNz">
                             <rect key="frame" x="134.5" y="10.5" width="145.5" height="69.5"/>
@@ -48,7 +48,7 @@
                     </subviews>
                     <color key="backgroundColor" name="PALE MAGENTA-PINK"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="3OZ-hv-di0" secondAttribute="bottom" constant="20" id="777-zM-ud3"/>
+                        <constraint firstAttribute="bottom" secondItem="3OZ-hv-di0" secondAttribute="bottom" constant="30" id="777-zM-ud3"/>
                         <constraint firstItem="M3c-2e-nsb" firstAttribute="top" secondItem="4xO-RD-YNz" secondAttribute="bottom" id="F5g-SQ-tsr"/>
                         <constraint firstItem="3OZ-hv-di0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ozO-sO-zPC" secondAttribute="leading" constant="10" id="FLP-6f-3fv"/>
                         <constraint firstItem="4xO-RD-YNz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ozO-sO-zPC" secondAttribute="top" constant="10" id="FrZ-d8-lSw"/>
@@ -56,13 +56,13 @@
                         <constraint firstItem="M3c-2e-nsb" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="Yqg-3s-eQA"/>
                         <constraint firstAttribute="bottom" secondItem="3OZ-hv-di0" secondAttribute="bottom" priority="750" constant="10" id="dgy-Q8-XLu"/>
                         <constraint firstItem="4xO-RD-YNz" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="k1B-wX-k57"/>
-                        <constraint firstAttribute="height" constant="150" id="qEo-1v-rA6"/>
+                        <constraint firstAttribute="height" constant="160" id="qEo-1v-rA6"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3OZ-hv-di0" secondAttribute="trailing" constant="10" id="tE4-MN-S0Q"/>
                         <constraint firstItem="3OZ-hv-di0" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="vCj-gw-vHu"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="40" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="po7-GB-AXz">
-                    <rect key="frame" x="0.0" y="194" width="414" height="668"/>
+                    <rect key="frame" x="0.0" y="204" width="414" height="658"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="sectionIndexBackgroundColor" red="0.89092243019999995" green="0.89092243019999995" blue="0.89092243019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
@@ -71,7 +71,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfq-JU-kMG">
-                    <rect key="frame" x="344" y="159" width="60" height="60"/>
+                    <rect key="frame" x="344" y="174" width="60" height="60"/>
                     <color key="backgroundColor" name="DARK LAVENDER"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="QBd-df-blX"/>
@@ -93,7 +93,7 @@
                 <constraint firstItem="ozO-sO-zPC" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="B1f-Re-4jw"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ozO-sO-zPC" secondAttribute="trailing" id="I1R-ga-Nrl"/>
                 <constraint firstItem="ozO-sO-zPC" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="a3y-i1-jMK"/>
-                <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="tfq-JU-kMG" secondAttribute="bottom" constant="-25" id="bZ9-CC-1Zu"/>
+                <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="tfq-JU-kMG" secondAttribute="bottom" constant="-30" id="bZ9-CC-1Zu"/>
                 <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="ozO-sO-zPC" secondAttribute="bottom" id="t7z-Sa-6qF"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

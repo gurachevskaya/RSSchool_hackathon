@@ -215,7 +215,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
    // NSInteger age = 20;
    // NSInteger weight = 55;
     
-    [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
+//    [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
     
     [self.navigationController pushViewController:[GeneralInformationViewController new] animated:YES];
  

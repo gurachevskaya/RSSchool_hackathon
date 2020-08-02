@@ -47,14 +47,14 @@
     [context save: nil];
 }
 
-- (void)addDrink {
+- (void)addDrink:(NSString *)name alcoholPercent:(NSInteger)percent volume:(NSInteger)volume {
     NSManagedObjectContext *context = [self.persistentContainer newBackgroundContext];
     Drink *drink = [[Drink alloc] initWithContext:context];
     [context performBlockAndWait:^{
-        drink.name = @"Beer";
+        drink.name = name;
         drink.date = [NSDate date];
-        drink.alcoholPercent = 8;
-        drink.volume = 0.5;
+        drink.alcoholPercent = percent;
+        drink.volume = volume;
       }];
       [context save: nil];
 }

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,17 +31,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqd-5b-nLs">
-                        <rect key="frame" x="268" y="14" width="42" height="21"/>
+                        <rect key="frame" x="268" y="65" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" name="SHAMPOO"/>
                 <constraints>
                     <constraint firstItem="AC6-06-mwM" firstAttribute="leading" secondItem="AxH-Yj-q7Z" secondAttribute="leading" id="E18-Ln-2sc"/>
+                    <constraint firstItem="bqd-5b-nLs" firstAttribute="centerY" secondItem="AC6-06-mwM" secondAttribute="centerY" id="Et7-uA-jwx"/>
                     <constraint firstAttribute="bottom" secondItem="AC6-06-mwM" secondAttribute="bottom" constant="11" id="JaA-ot-glL"/>
-                    <constraint firstItem="bqd-5b-nLs" firstAttribute="centerY" secondItem="AxH-Yj-q7Z" secondAttribute="centerY" id="XTm-0b-pdR"/>
                     <constraint firstAttribute="trailing" secondItem="bqd-5b-nLs" secondAttribute="trailing" constant="10" id="diy-pe-9z0"/>
                     <constraint firstItem="AC6-06-mwM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AxH-Yj-q7Z" secondAttribute="bottom" constant="5" id="oFY-4c-BB3"/>
                     <constraint firstItem="AxH-Yj-q7Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="v4i-uE-2Ra"/>
@@ -56,4 +57,9 @@
             <point key="canvasLocation" x="13.043478260869566" y="-22.433035714285712"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="SHAMPOO">
+            <color red="1" green="0.77600002288818359" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -11,8 +11,11 @@
 #import "StartViewController.h"
 #import "UIColor+ProjectColors.h"
 #import "NSString+TimeFormatter.h"
+#import "DataManager.h"
+#import "User+CoreDataProperties.h"
+#import "Drink+CoreDataProperties.h"
 
-@interface GeneralInformationViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface GeneralInformationViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
@@ -20,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *promillesLabel;
 
 @property (nonatomic, assign) NSTimeInterval timeProgress;
-
 @property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic) NSFetchedResultsController *frc;
+
 
 @end
 
@@ -32,26 +37,31 @@ static float promilles = 0.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
-    
-    UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
-    preferencesButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = preferencesButton;
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
-    
+    [self configureAppearance];
+           
+    self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:[Drink fetchRequest] managedObjectContext:[[DataManager sharedManager]viewContext] sectionNameKeyPath:nil cacheName:nil];
+    self.frc.delegate = self;
+
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     
-    self.promillesLabel.text = [NSString stringWithFormat:@"There is %g of alcohol in your blood", promilles];
+    promilles = [self calculatePromilles];
+    
+    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", promilles];
     
     [self updateStateLabelText];
 //    self.timeProgress = 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.frc performFetch:nil];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+//    return 5;
+    return self.frc.fetchedObjects.count;;
 }
 
 
@@ -59,16 +69,14 @@ static float promilles = 0.0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
      DrinkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
     
-    
-    
-    
-       
+    [cell configureWithDrink:self.frc.fetchedObjects[indexPath.row]];
+
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"History";
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    return @"History";
+//}
 
 
 
@@ -76,19 +84,30 @@ static float promilles = 0.0;
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    // Background color
-    view.tintColor = [UIColor primaryDarkColor];
+//- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+//    // Background color
+//    view.tintColor = [UIColor primaryDarkColor];
+//
+//    // Text Color
+//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+//    [header.textLabel setTextColor:[UIColor blackColor]];
+//
+//    // Another way to set the background color
+//    // Note: does not preserve gradient effect of original header
+//    // header.contentView.backgroundColor = [UIColor blackColor];
+//}
 
-    // Text Color
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor blackColor]];
+#pragma mark - UI Setup
 
-    // Another way to set the background color
-    // Note: does not preserve gradient effect of original header
-    // header.contentView.backgroundColor = [UIColor blackColor];
+- (void)configureAppearance {
+    self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
+
+    UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
+    preferencesButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = preferencesButton;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
 }
-
 
 
 #pragma mark - Actions
@@ -166,6 +185,48 @@ static float promilles = 0.0;
             self.stateLabel.text = @"You died, Congrats!";
             break;
     }
+}
+
+- (float)calculatePromilles {
+    //c = A/(m * r), where A - amount of ethanol in ml, m - weight in kg, r - Widmark coefficient
+//  -0.15/60 - every minute
+    
+    NSManagedObjectContext *context = [DataManager sharedManager].newBackgroundContext;
+    NSFetchRequest *userFetchRequest = [User fetchRequest];
+    NSFetchRequest *drinkFetchRequest = [Drink fetchRequest];
+    
+    NSArray *userArray = [context executeFetchRequest:userFetchRequest error:nil];
+    User *user = [userArray firstObject];
+    NSInteger m = user.weight;
+    NSString *sex = user.sex;
+    
+    NSArray *drinksArray = [context executeFetchRequest:drinkFetchRequest error:nil];
+    
+    NSInteger A = 0;
+    for (Drink *drink in drinksArray) {
+        NSDate *currentDate = [NSDate date];
+        NSDate *dateOfDrink = drink.date;
+        NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:dateOfDrink];
+        int minutesBerween = secondsBetween / 60;
+        NSInteger ethanol = (drink.volume * drink.alcoholPercent / 100) - 0.15/60 * minutesBerween;
+        if (ethanol > 0) {
+        A = A + ethanol;
+        }
+    }
+
+//    drink.alcoholPercent;
+//    drink.volume;
+//    drink.date;
+    
+    float r;
+      if ([sex isEqualToString:@"Male"]) {
+          r = 0.7;
+      } else {
+          r = 0.6;
+      }
+    
+    float c = A / (m * r);
+    return c;
 }
 
 @end
