@@ -212,8 +212,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
     
     //get values from textFields
-   // NSInteger age = 20;
-   // NSInteger weight = 55;
+    NSInteger age = [self.ageTextField.text intValue];
+    NSInteger weight =[self.weightTextField.text intValue];
     
     [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
     
