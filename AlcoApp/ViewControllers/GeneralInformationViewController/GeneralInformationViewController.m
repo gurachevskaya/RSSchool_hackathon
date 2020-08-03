@@ -10,10 +10,14 @@
 #import "DrinkTableViewCell.h"
 #import "StartViewController.h"
 #import "UIColor+ProjectColors.h"
+
+#import "DrinkTypeViewController.h"
+
 #import "NSString+TimeFormatter.h"
 #import "DataManager.h"
 #import "User+CoreDataProperties.h"
 #import "Drink+CoreDataProperties.h"
+
 
 @interface GeneralInformationViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -34,11 +38,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
+    [self.addButton addTarget:self action:@selector(tapIntoAddButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
+    preferencesButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = preferencesButton;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
+    
+
     [self configureAppearance];
     self.tableView.allowsSelection = NO;
            
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:[Drink fetchRequest] managedObjectContext:[[DataManager sharedManager]viewContext] sectionNameKeyPath:nil cacheName:nil];
     self.frc.delegate = self;
+
 
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     
@@ -149,6 +165,14 @@
 - (void)openPreferences {
     StartViewController *preferences = [[StartViewController alloc] initWithType:Preferences];
     [self presentViewController:preferences animated:YES completion:nil];
+
+}
+-(void)tapIntoAddButton{
+    
+    DrinkTypeViewController *drinkTypeViewController=[DrinkTypeViewController new];
+    
+    [self.navigationController pushViewController:drinkTypeViewController animated:YES];
+
 }
 
 - (IBAction)addButtonTapped:(id)sender {
