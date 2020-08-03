@@ -39,6 +39,7 @@ static float promilles = 0.0;
     [super viewDidLoad];
     
     [self configureAppearance];
+    self.tableView.allowsSelection = NO;
            
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:[Drink fetchRequest] managedObjectContext:[[DataManager sharedManager]viewContext] sectionNameKeyPath:nil cacheName:nil];
     self.frc.delegate = self;
@@ -87,6 +88,48 @@ static float promilles = 0.0;
     [header.textLabel setTextColor:[UIColor blackColor]];
 }
 
+-(UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        NSManagedObjectContext *context = [DataManager sharedManager].viewContext;
+        [context performBlockAndWait:^{
+        Drink *drink = [[[Drink fetchRequest] execute:nil] objectAtIndex: indexPath.row];
+        [context deleteObject: drink];
+        }];
+        [context save:nil];
+        completionHandler(YES);
+    }];
+    deleteAction.backgroundColor = [UIColor accentColor];
+    return [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+}
+
+
+
+#pragma mark - Fetched Results Controller Delegate
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath {
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+
 #pragma mark - UI Setup
 
 - (void)configureAppearance {
@@ -124,6 +167,12 @@ static float promilles = 0.0;
 
 - (void)handleTimer {
     self.timeProgress -= 1.0;
+    
+    if (self.timeProgress <= 0) {
+           [self stopTimer];
+           self.timerLabel.text = @"You are sober!";
+       }
+    
     [self.timerLabel setText:[NSString timeFormatted:self.timeProgress]];
     promilles = 0;
     
@@ -132,11 +181,6 @@ static float promilles = 0.0;
     self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", promilles];
        
     [self updateStateLabelText];
-    
-    if (self.timeProgress <= 0) {
-        [self stopTimer];
-        self.timerLabel.text = @"You are sober!";
-    }
 }
 
 - (Behaviour)getBehaviourFromPromilles:(float)promilles {
