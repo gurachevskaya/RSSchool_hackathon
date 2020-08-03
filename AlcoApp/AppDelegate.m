@@ -28,40 +28,43 @@
     NSManagedObjectContext *viewContext = [DataManager sharedManager].newBackgroundContext;
     NSFetchRequest *fetchRequest = [User fetchRequest];
     NSArray *resultArray = [viewContext executeFetchRequest:fetchRequest error:nil];
-    UINavigationController *navigationController;
     
     if (resultArray.count == 0) {
         StartViewController *vc = [[StartViewController alloc] initWithType:Greeting];
-        navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = vc;
+
     } else {
         GeneralInformationViewController *vc = [[GeneralInformationViewController alloc]initWithNibName:@"GeneralInformationViewController" bundle:nil];
-        navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = navigationController;
     }
 
-    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     
-//    [[DataManager sharedManager] addDrink:@"Beer" alcoholPercent:8 volume:1000];
-//    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
-
+    [[DataManager sharedManager] addDrink:@"Beer" alcoholPercent:8 volume:1000];
+    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
     
     /*
      [[DataManager sharedManager] configureUserWithAge:18 sex:@"male" weight:55];
      [[DataManager sharedManager] configureUserWithAge:20 sex:@"female" weight:55];
      */
+    
      
      NSManagedObjectContext *context = [DataManager sharedManager].newBackgroundContext;
      NSFetchRequest *request = [Drink fetchRequest];
      [fetchRequest setReturnsObjectsAsFaults:NO];
      NSArray *drinks = [context executeFetchRequest:request error:nil];
-     
-     NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
+    
+    NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:[User fetchRequest]];
+     [context executeRequest:deleteRequest error:nil];
+    [context save:nil];
+
+     NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[User fetchRequest] error:nil]);
      
      for (Drink *drink in drinks) {
          NSLog(@"percent: %hd name: %@ volume: %hd", drink.alcoholPercent, drink.name, drink.volume);
      }
-    
     
     return YES;
     

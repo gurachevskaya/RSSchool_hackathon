@@ -18,7 +18,9 @@ typedef NS_ENUM(NSInteger, ViewControllerType) {
 @protocol UIConfiguringProtocol
 
 - (void)configureButtonText;
- -(void)configureLabelText;
+- (void)configureLabelText;
+- (void)nextButtonTapped;
+
 @end
 
 @interface StartViewController : UIViewController <UIConfiguringProtocol>
