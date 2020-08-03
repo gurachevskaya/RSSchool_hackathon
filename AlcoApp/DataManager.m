@@ -48,7 +48,7 @@
 }
 
 - (void)addDrink:(NSString *)name alcoholPercent:(NSInteger)percent volume:(NSInteger)volume {
-    NSManagedObjectContext *context = [self.persistentContainer newBackgroundContext];
+    NSManagedObjectContext *context = [self.persistentContainer viewContext];
     Drink *drink = [[Drink alloc] initWithContext:context];
     [context performBlockAndWait:^{
         drink.name = name;

@@ -42,8 +42,8 @@
     [self.window makeKeyAndVisible];
     
     
-    [[DataManager sharedManager] addDrink:@"Beer" alcoholPercent:8 volume:1000];
-    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
+//    [[DataManager sharedManager] addDrink:@"Beer" alcoholPercent:8 volume:1000];
+//    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
     
     /*
      [[DataManager sharedManager] configureUserWithAge:18 sex:@"male" weight:55];

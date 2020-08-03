@@ -13,7 +13,7 @@
 
 + (NSFetchRequest<Drink *> *)fetchRequest {
     NSFetchRequest<Drink *> *request = [NSFetchRequest fetchRequestWithEntityName:@"Drink"];
-       request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+       request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
        return request;
 }
 
