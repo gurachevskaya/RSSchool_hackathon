@@ -27,13 +27,9 @@
 
 @property (nonatomic) NSFetchedResultsController *frc;
 
-
 @end
 
 @implementation GeneralInformationViewController
-
-static float promilles = 0.0;
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,10 +42,9 @@ static float promilles = 0.0;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     
-    [self calculatePromilles];
+    float promilles = [self calculatePromilles];
     self.timeProgress = promilles/0.15 * 60 * 60;
     [self startTimer];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,12 +59,9 @@ static float promilles = 0.0;
 }
 
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
      DrinkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
-    
     [cell configureWithDrink:self.frc.fetchedObjects[indexPath.row]];
-
     return cell;
 }
 
@@ -82,14 +74,12 @@ static float promilles = 0.0;
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     // Background color
     view.tintColor = [UIColor primaryDarkColor];
-
     // Text Color
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     [header.textLabel setTextColor:[UIColor blackColor]];
 }
 
--(UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         NSManagedObjectContext *context = [DataManager sharedManager].viewContext;
         [context performBlockAndWait:^{
@@ -112,15 +102,27 @@ static float promilles = 0.0;
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            
+            self.timeProgress = [self calculatePromilles]/0.15 * 60 * 60;
+            [self stopTimer];
+            [self startTimer];
+
             break;
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            self.timeProgress = [self calculatePromilles]/0.15 * 60 * 60;
+            [self stopTimer];
+
+            [self startTimer];
+
             break;
             
         case NSFetchedResultsChangeUpdate:
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            self.timeProgress = [self calculatePromilles]/0.15 * 60 * 60;
+            [self stopTimer];
+
+            [self startTimer];
             break;
             
         default:
@@ -149,6 +151,13 @@ static float promilles = 0.0;
     [self presentViewController:preferences animated:YES completion:nil];
 }
 
+- (IBAction)addButtonTapped:(id)sender {
+    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
+    
+    NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
+}
+
+
 #pragma mark - Timer
 
 - (void)startTimer {
@@ -174,32 +183,31 @@ static float promilles = 0.0;
        }
     
     [self.timerLabel setText:[NSString timeFormatted:self.timeProgress]];
-    promilles = 0;
-    
-    [self calculatePromilles];
+
+    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", [self calculatePromilles]];
     [self updateStateLabelText];
-    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", promilles];
-       
-    [self updateStateLabelText];
+
 }
 
 - (Behaviour)getBehaviourFromPromilles:(float)promilles {
-    if (promilles == 0) return SOBER;
-    else if (promilles <= 0.2) return ALMOST_NORMAL;
-    else if (promilles <= 0.3) return EUPHORIC;
-    else if (promilles <= 0.6) return DISINHIBITIONS;
-    else if (promilles <= 1.0) return EXPRESSIVENESS;
-    else if (promilles <= 2.0) return STUPOR;
-    else if (promilles <= 3.0) return UNCONSCIOUS;
-    else if (promilles <= 4.0) return BLACKOUT;
+    if (promilles <= 0.2) return SOBER;
+    else if (promilles <= 0.3) return ALMOST_NORMAL;
+    else if (promilles <= 0.6) return EUPHORIC;
+    else if (promilles <= 1.0) return DISINHIBITIONS;
+    else if (promilles <= 2.0) return EXPRESSIVENESS;
+    else if (promilles <= 3.0) return STUPOR;
+    else if (promilles <= 4.0) return UNCONSCIOUS;
+    else if (promilles <= 5.0) return BLACKOUT;
     else return DEAD;
 }
 
 - (void)updateStateLabelText {
-    Behaviour behaviour = [self getBehaviourFromPromilles:promilles];
+    Behaviour behaviour = [self getBehaviourFromPromilles:[self calculatePromilles]];
     switch (behaviour) {
         case SOBER:
             self.stateLabel.text = @"You are completely fine";
+            [self stopTimer];
+            self.timerLabel.text = @"You are sober!";
             break;
         case ALMOST_NORMAL:
             self.stateLabel.text = @"You feel normal, slightly relaxed";
@@ -230,7 +238,7 @@ static float promilles = 0.0;
     }
 }
 
-- (void)calculatePromilles {
+- (float)calculatePromilles {
     //c = A/(m * r), where A - amount of ethanol in ml, m - weight in kg, r - Widmark coefficient
     //  -0.15/60 - every minute
     
@@ -250,23 +258,21 @@ static float promilles = 0.0;
              r = 0.6;
          }
     NSArray *drinksArray = [context executeFetchRequest:drinkFetchRequest error:nil];
-    
+    float promilles = 0.0;
     for (Drink *drink in drinksArray) {
         NSDate *currentDate = [NSDate date];
         NSDate *dateOfDrink = drink.date;
         NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:dateOfDrink];
-        float minutesBerween = secondsBetween / 60;
+        float minutesBetween = secondsBetween / 60;
         NSInteger ethanol = (drink.volume * drink.alcoholPercent / 100);
-        float prom = ethanol / (m * r) - 0.15/60 * minutesBerween;
+        float prom = ethanol / (m * r) - 0.15/60 * minutesBetween;
 
         if (prom > 0) {
-        promilles = promilles + prom;
+            promilles = (promilles + prom);
         }
     }
+    return promilles;
 }
 
-//- (void)reCalculatePromilles {
-//    promilles =  self.timeProgress / 60 / 60 * 0.15 ;
-//}
 
 @end
