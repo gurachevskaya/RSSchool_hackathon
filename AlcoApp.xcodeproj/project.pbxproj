@@ -30,6 +30,7 @@
 		9A8E9A1724D569570033E1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1624D569570033E1C4 /* Assets.xcassets */; };
 		9A8E9A1D24D569570033E1C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A1C24D569570033E1C4 /* main.m */; };
 		9A8E9A4E24D56BA00033E1C4 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E9A4C24D56BA00033E1C4 /* StartViewController.m */; };
+		9AA01DE524D8218C006D54BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA01DE424D8218C006D54BA /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		9A8E9A1C24D569570033E1C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A8E9A4B24D56BA00033E1C4 /* StartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		9A8E9A4C24D56BA00033E1C4 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		9AA01DE424D8218C006D54BA /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				9A8E9A0D24D569540033E1C4 /* ViewController.h */,
 				9A8E9A0E24D569540033E1C4 /* ViewController.m */,
 				9A8E9A1024D569540033E1C4 /* Main.storyboard */,
+				9AA01DE424D8218C006D54BA /* LaunchScreen.xib */,
 				9A8E9A1624D569570033E1C4 /* Assets.xcassets */,
 				9A8E9A1B24D569570033E1C4 /* Info.plist */,
 				9A8E9A1C24D569570033E1C4 /* main.m */,
@@ -314,6 +317,7 @@
 				9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */,
 				9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */,
 				9A63691924D5DCFE00B8579B /* DrinkTableViewCell.xib in Resources */,
+				9AA01DE524D8218C006D54BA /* LaunchScreen.xib in Resources */,
 				9A63690824D5792800B8579B /* Amatic-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

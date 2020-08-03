@@ -49,9 +49,6 @@ static float promilles = 0.0;
     self.timeProgress = promilles/0.15 * 60 * 60;
     [self startTimer];
 
-    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", promilles];
-    
-    [self updateStateLabelText];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,34 +72,28 @@ static float promilles = 0.0;
     return cell;
 }
 
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    return @"History";
-//}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"History";
+}
 
 #pragma mark - UITableViewDelegate
 
-//- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-//    // Background color
-//    view.tintColor = [UIColor primaryDarkColor];
-//
-//    // Text Color
-//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-//    [header.textLabel setTextColor:[UIColor blackColor]];
-//
-//    // Another way to set the background color
-//    // Note: does not preserve gradient effect of original header
-//    // header.contentView.backgroundColor = [UIColor blackColor];
-//}
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    // Background color
+    view.tintColor = [UIColor primaryDarkColor];
+
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor blackColor]];
+}
 
 #pragma mark - UI Setup
 
 - (void)configureAppearance {
     self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
-
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
     preferencesButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = preferencesButton;
-    self.navigationItem.leftBarButtonItem = nil;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
 }
@@ -113,7 +104,6 @@ static float promilles = 0.0;
 - (void)openPreferences {
     StartViewController *preferences = [[StartViewController alloc] initWithType:Preferences];
     [self presentViewController:preferences animated:YES completion:nil];
-
 }
 
 #pragma mark - Timer
@@ -139,9 +129,13 @@ static float promilles = 0.0;
     
     [self calculatePromilles];
     [self updateStateLabelText];
+    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", promilles];
+       
+    [self updateStateLabelText];
     
-    if (self.timeProgress == 0) {
+    if (self.timeProgress <= 0) {
         [self stopTimer];
+        self.timerLabel.text = @"You are sober!";
     }
 }
 
@@ -217,7 +211,7 @@ static float promilles = 0.0;
         NSDate *currentDate = [NSDate date];
         NSDate *dateOfDrink = drink.date;
         NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:dateOfDrink];
-        int minutesBerween = secondsBetween / 60;
+        float minutesBerween = secondsBetween / 60;
         NSInteger ethanol = (drink.volume * drink.alcoholPercent / 100);
         float prom = ethanol / (m * r) - 0.15/60 * minutesBerween;
 
