@@ -324,7 +324,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     NSInteger age = [self.ageTextField.text intValue];
     NSInteger weight =[self.weightTextField.text intValue];
     
-    if (age < 18) {
+
+    if (age < 18 ) {
         [self showAgeAlert];
     } else {
     [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
