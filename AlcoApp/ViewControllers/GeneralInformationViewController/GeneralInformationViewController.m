@@ -10,9 +10,8 @@
 #import "DrinkTableViewCell.h"
 #import "StartViewController.h"
 #import "UIColor+ProjectColors.h"
-
 #import "DrinkTypeViewController.h"
-
+#import "DrinkDetailedInfoViewController.h"
 #import "NSString+TimeFormatter.h"
 #import "DataManager.h"
 #import "User+CoreDataProperties.h"
@@ -38,9 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
     self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
-    [self.addButton addTarget:self action:@selector(tapIntoAddButton) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
     preferencesButton.tintColor = [UIColor blackColor];
@@ -54,7 +51,6 @@
            
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:[Drink fetchRequest] managedObjectContext:[[DataManager sharedManager]viewContext] sectionNameKeyPath:nil cacheName:nil];
     self.frc.delegate = self;
-
 
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     
@@ -167,17 +163,12 @@
     [self presentViewController:preferences animated:YES completion:nil];
 
 }
--(void)tapIntoAddButton{
-    
-    DrinkTypeViewController *drinkTypeViewController=[DrinkTypeViewController new];
-    
-    [self.navigationController pushViewController:drinkTypeViewController animated:YES];
 
-}
 
 - (IBAction)addButtonTapped:(id)sender {
-    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
     
+//    [self presentViewController:[DrinkTypeViewController new] animated:YES completion:nil];
+    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
     NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
 }
 
