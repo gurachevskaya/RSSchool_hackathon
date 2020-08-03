@@ -8,17 +8,33 @@
 
 #import "DrinkTableViewCell.h"
 
+
+@interface DrinkTableViewCell ()
+
+@end
+
+
 @implementation DrinkTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.layer.cornerRadius = 30;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+- (void)configureWithDrink:(Drink *)drink {
+    self.drinkNameLabel.text = drink.name;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString *dateString = [formatter stringFromDate:drink.date];
+    
+    self.timeLabel.text = dateString;
+    
+    self.volumeLabel.text = [NSString stringWithFormat:@"%hd ml",drink.volume];
+    
 }
+
+
 
 @end

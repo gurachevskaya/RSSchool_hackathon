@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSManagedObjectContext *)newBackgroundContext;
 
 - (void)configureUserWithAge:(NSInteger)age sex:(NSString *)sex weight:(NSInteger)weight;
+- (void)addDrink:(NSString *)name alcoholPercent:(NSInteger)percent volume:(NSInteger)volume;
 
 @end
 

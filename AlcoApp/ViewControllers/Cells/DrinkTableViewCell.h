@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Drink+CoreDataProperties.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DrinkTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *drinkNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *volumeLabel;
 
+- (void)configureWithDrink:(Drink *)drink;
 @end
 
 NS_ASSUME_NONNULL_END

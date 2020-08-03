@@ -16,14 +16,15 @@ static CGFloat TEXT_FIELD_HEIGHT_CONST=(CGFloat)50;
 static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 
-@interface StartViewController () <UITextFieldDelegate>
+@interface StartViewController ()
 
 @property (strong, nonatomic) UITextField *ageTextField;
 @property (strong, nonatomic) UITextField *weightTextField;
 @property (strong, nonatomic) UISegmentedControl *sexSegmentControl;
 @property (strong, nonatomic) UIButton *nextButton;
+@property(assign,nonatomic) NSString *weightInt;
+@property(assign,nonatomic) NSInteger *ageInt;
 @property(strong,nonatomic) UILabel *helloLabel;
-@property(strong,nonatomic) UIStackView *stackView;
 
 @end
 
@@ -64,28 +65,24 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     self.helloLabel=[self setUpHelloLabel];
     [self.view addSubview:self.helloLabel];
     
-    self.stackView=[self setUpStackView];
-    [self.view addSubview:self.stackView];
+    UIStackView *stackView=[self setUpStackView];
+    [self.view addSubview:stackView];
     
     self.nextButton=[self setUpNextButton];
     [self.view addSubview:self.nextButton];
     
- [self creatingConstraintsVertical:self.helloLabel andStackView:self.stackView andNextButton:self.nextButton];
+    [self creatingConstraints:self.helloLabel andStackView:stackView andNextButton:self.nextButton];
     [self configureButtonText];
     [self configureLabelText];
     
     [self hideWhenTappedAround];
     
-    [self hideWhenTappedAround];
-    
 }
 - (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    
 }
 
-#pragma mark - SetupElements
+
 
 -(UILabel* )setUpHelloLabel{
     UILabel *helloLabel=[UILabel new];
@@ -99,6 +96,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     helloLabel.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
     [helloLabel.widthAnchor constraintEqualToConstant:screenWidth],
+    //[helloLabel.heightAnchor constraintEqualToConstant:90]
     ]];
     return helloLabel;
 }
@@ -141,8 +139,6 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 }
 
 
-
-
 -(UITextField *) setUpWeightTextField{
     
     UITextField *weightTextField=[UITextField new];
@@ -164,7 +160,6 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     return weightTextField;
     
 }
-
 -(UISegmentedControl *) setUpSexSegmentControl{
     
     UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Male",@"Female"]];
@@ -177,7 +172,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     segmentControl.layer.cornerRadius=70;
     
     segmentControl.selectedSegmentIndex=0;
-
+    
     return segmentControl;
 }
 
@@ -197,11 +192,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     return nextButton;
 }
-
-
-#pragma mark - CreatingOfConstraints
-
--(void)creatingConstraintsVertical:(UILabel *) helloLabel andStackView:(UIStackView *)stackView andNextButton: (UIButton *) nextButton{
+-(void)creatingConstraints:(UILabel *) helloLabel andStackView:(UIStackView *)stackView andNextButton: (UIButton *) nextButton{
     helloLabel.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
         [helloLabel.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
@@ -216,36 +207,14 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     ]];
     nextButton.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
-    [nextButton.topAnchor constraintLessThanOrEqualToSystemSpacingBelowAnchor:stackView.bottomAnchor multiplier:10],
+    [nextButton.topAnchor constraintEqualToAnchor:stackView.bottomAnchor constant:200],
     [nextButton.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor constant:-40]
     ]];
 }
-
--(void)creatingConstraintsHorizontal:(UILabel *) helloLabel andStackView:(UIStackView *)stackView andNextButton: (UIButton *) nextButton{
-    helloLabel.translatesAutoresizingMaskIntoConstraints=NO;
-    [NSLayoutConstraint activateConstraints:@[
-        [helloLabel.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
-        [helloLabel.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
-        [helloLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:0]
-    ]];
-    stackView.translatesAutoresizingMaskIntoConstraints=NO;
-    [NSLayoutConstraint activateConstraints:@[
-    [stackView.topAnchor constraintEqualToAnchor:helloLabel.bottomAnchor constant:30],
-    [stackView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
-    [stackView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor]
-    ]];
-    nextButton.translatesAutoresizingMaskIntoConstraints=NO;
-    [NSLayoutConstraint activateConstraints:@[
-    [nextButton.topAnchor constraintLessThanOrEqualToSystemSpacingBelowAnchor:stackView.bottomAnchor multiplier:10],
-    [nextButton.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor constant:-40]
-    ]];
-}
-
 
 - (void)nextButtonTaped {
     
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
-    
     NSInteger age = [self.ageTextField.text intValue];
     NSInteger weight =[self.weightTextField.text intValue];
     
@@ -253,22 +222,16 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     [self.navigationController pushViewController:[GeneralInformationViewController new] animated:YES];
  
-
-
-    
-    
 }
 
-#pragma mark - HideKeyBoard
+-(void)hideWhenTappedAround{
+    UITapGestureRecognizer *gesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+    [self.view addGestureRecognizer:gesture];
+}
 
- -(void)hideWhenTappedAround {
-     UITapGestureRecognizer *gesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
-     
-     [self.view addGestureRecognizer:gesture];
- }
--(void)hide{
+
+-(void) hide{
     [self.view endEditing:YES];
-    
 }
 
 @end

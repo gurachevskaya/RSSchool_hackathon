@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GeneralInformationViewController">
             <connections>
                 <outlet property="addButton" destination="tfq-JU-kMG" id="Tbj-KF-coS"/>
+                <outlet property="promillesLabel" destination="3OZ-hv-di0" id="qEb-YF-eOy"/>
+                <outlet property="stateLabel" destination="M3c-2e-nsb" id="qW1-4L-hpF"/>
                 <outlet property="tableView" destination="po7-GB-AXz" id="5R8-yI-Ol9"/>
+                <outlet property="timerLabel" destination="4xO-RD-YNz" id="czP-2l-0JA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,22 +25,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-sO-zPC">
-                    <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="160"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-RD-YNz">
-                            <rect key="frame" x="134.5" y="37" width="145.5" height="69.5"/>
+                            <rect key="frame" x="134.5" y="10.5" width="145.5" height="69.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="58"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are very drunk!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3c-2e-nsb">
-                            <rect key="frame" x="130" y="106.5" width="154.5" height="21"/>
+                            <rect key="frame" x="130" y="80" width="154.5" height="21"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is 0.05 of alcohol in your blood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OZ-hv-di0">
-                            <rect key="frame" x="58.5" y="135.5" width="297.5" height="21"/>
+                            <rect key="frame" x="58.5" y="109" width="297.5" height="21"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -45,19 +48,21 @@
                     </subviews>
                     <color key="backgroundColor" name="PALE MAGENTA-PINK"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="3OZ-hv-di0" secondAttribute="bottom" constant="30" id="777-zM-ud3"/>
                         <constraint firstItem="M3c-2e-nsb" firstAttribute="top" secondItem="4xO-RD-YNz" secondAttribute="bottom" id="F5g-SQ-tsr"/>
                         <constraint firstItem="3OZ-hv-di0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ozO-sO-zPC" secondAttribute="leading" constant="10" id="FLP-6f-3fv"/>
-                        <constraint firstItem="4xO-RD-YNz" firstAttribute="top" secondItem="ozO-sO-zPC" secondAttribute="top" constant="37" id="FrZ-d8-lSw"/>
+                        <constraint firstItem="4xO-RD-YNz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ozO-sO-zPC" secondAttribute="top" constant="10" id="FrZ-d8-lSw"/>
                         <constraint firstItem="3OZ-hv-di0" firstAttribute="top" secondItem="M3c-2e-nsb" secondAttribute="bottom" constant="8" id="M8O-QZ-TcE"/>
                         <constraint firstItem="M3c-2e-nsb" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="Yqg-3s-eQA"/>
+                        <constraint firstAttribute="bottom" secondItem="3OZ-hv-di0" secondAttribute="bottom" priority="750" constant="10" id="dgy-Q8-XLu"/>
                         <constraint firstItem="4xO-RD-YNz" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="k1B-wX-k57"/>
-                        <constraint firstAttribute="height" constant="200" id="qEo-1v-rA6"/>
+                        <constraint firstAttribute="height" constant="160" id="qEo-1v-rA6"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3OZ-hv-di0" secondAttribute="trailing" constant="10" id="tE4-MN-S0Q"/>
                         <constraint firstItem="3OZ-hv-di0" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="vCj-gw-vHu"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="40" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="po7-GB-AXz">
-                    <rect key="frame" x="0.0" y="244" width="414" height="618"/>
+                    <rect key="frame" x="0.0" y="204" width="414" height="658"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="sectionIndexBackgroundColor" red="0.89092243019999995" green="0.89092243019999995" blue="0.89092243019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
@@ -66,7 +71,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfq-JU-kMG">
-                    <rect key="frame" x="344" y="209" width="60" height="60"/>
+                    <rect key="frame" x="344" y="174" width="60" height="60"/>
                     <color key="backgroundColor" name="DARK LAVENDER"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="QBd-df-blX"/>
@@ -88,7 +93,7 @@
                 <constraint firstItem="ozO-sO-zPC" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="B1f-Re-4jw"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ozO-sO-zPC" secondAttribute="trailing" id="I1R-ga-Nrl"/>
                 <constraint firstItem="ozO-sO-zPC" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="a3y-i1-jMK"/>
-                <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="tfq-JU-kMG" secondAttribute="bottom" constant="-25" id="bZ9-CC-1Zu"/>
+                <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="tfq-JU-kMG" secondAttribute="bottom" constant="-30" id="bZ9-CC-1Zu"/>
                 <constraint firstItem="po7-GB-AXz" firstAttribute="top" secondItem="ozO-sO-zPC" secondAttribute="bottom" id="t7z-Sa-6qF"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
