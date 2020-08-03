@@ -27,9 +27,10 @@
     [super viewDidLoad];
     
     self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
+    [self.addButton addTarget:self action:@selector(tapIntoAddButton) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
-    preferencesButton.tintColor = [UIColor whiteColor];
+    preferencesButton.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = preferencesButton;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
@@ -82,7 +83,9 @@
 - (void)openPreferences {
     StartViewController *preferences = [[StartViewController alloc] initWithType:Preferences];
     [self presentViewController:preferences animated:YES completion:nil];
-
+}
+-(void)tapIntoAddButton{
+    
 }
 
 #pragma mark - Timer
