@@ -7,11 +7,16 @@
 //
 
 #import "DrinkTypeViewController.h"
-
+#import "UIColor+ProjectColors.h"
+#import "DataManager.h"
 @interface DrinkTypeViewController ()
 @property(strong,nonatomic) UIButton *drinkTypeButton;
 @property(strong,nonatomic) UIButton *alchoContainerButton;
 @property(strong,nonatomic) UILabel *enterDrinksLabel;
+
+@property(strong,nonatomic) NSString *nameOfDrink;
+@property(assign,nonatomic) NSInteger *volume;
+@property(assign,nonatomic) NSInteger *persent;
 @end
 
 @implementation DrinkTypeViewController
@@ -19,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor=[UIColor whiteColor];
+    self.view.backgroundColor=[UIColor primaryColor];
     
     self.enterDrinksLabel=[self setUpEnterLabel];
     [self.view addSubview:self.enterDrinksLabel];
@@ -32,7 +37,7 @@
     
     [self setUpConstraints];
     
-    
+
     
 }
 
@@ -45,8 +50,8 @@
     button.translatesAutoresizingMaskIntoConstraints=NO;
     [button.widthAnchor constraintEqualToConstant:250].active=YES;
     [button.heightAnchor constraintEqualToConstant:50].active=YES;
-    button.backgroundColor = [UIColor yellowColor];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor accentColor];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [button addTarget:self action:@selector(addTypeAlert) forControlEvents:(UIControlEventTouchUpInside)];
     
@@ -60,8 +65,8 @@
        button.translatesAutoresizingMaskIntoConstraints=NO;
        [button.widthAnchor constraintEqualToConstant:250].active=YES;
        [button.heightAnchor constraintEqualToConstant:50].active=YES;
-       button.backgroundColor = [UIColor yellowColor];
-       [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+       button.backgroundColor = [UIColor accentColor];
+       [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
        
        [button addTarget:self action:@selector(addContainerAlert) forControlEvents:(UIControlEventTouchUpInside)];
        
@@ -85,12 +90,16 @@
 }
 
 -(void) addContainerAlert{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Container of your drink" message:@"Containers" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Containers" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
      UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
          NSLog(@"Cancel");
      }];
      UIAlertAction *shotAction = [UIAlertAction actionWithTitle:@"Shot(40ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
          
+         
+         
+
+  
      }];
      UIAlertAction *glassOfVodkaAction = [UIAlertAction actionWithTitle:@"Class(250ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
        
@@ -135,7 +144,7 @@
 }
 
 -(void)addTypeAlert{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Simple" message:@"Simple alertView demo with Cancel and OK." preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Drinks" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
      UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
          NSLog(@"Cancel");
      }];
