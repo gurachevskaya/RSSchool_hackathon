@@ -10,6 +10,7 @@
 #import "DrinkTableViewCell.h"
 #import "StartViewController.h"
 #import "UIColor+ProjectColors.h"
+#import "DrinkTypeViewController.h"
 
 @interface GeneralInformationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -86,6 +87,9 @@
 }
 -(void)tapIntoAddButton{
     
+    DrinkTypeViewController *drinkTypeViewController=[DrinkTypeViewController new];
+    
+    [self.navigationController pushViewController:drinkTypeViewController animated:YES];
 }
 
 #pragma mark - Timer
