@@ -43,16 +43,13 @@
 
 -(UIButton*) setUpTypeButton{
     UIButton *button=[UIButton new];
-    
-    [button setTitle:@"Enter what you drunk" forState:UIControlStateNormal];
-
-    
+    [button setTitle:@"Choose drink" forState:UIControlStateNormal];
     button.translatesAutoresizingMaskIntoConstraints=NO;
     [button.widthAnchor constraintEqualToConstant:250].active=YES;
     [button.heightAnchor constraintEqualToConstant:50].active=YES;
     button.backgroundColor = [UIColor accentColor];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
+    button.layer.cornerRadius = 15;
     [button addTarget:self action:@selector(addTypeAlert) forControlEvents:(UIControlEventTouchUpInside)];
     
     return button;
@@ -61,16 +58,16 @@
 
 -(UIButton *) setUpContainerButton{
     UIButton *button=[UIButton new];
-       [button setTitle:@"Enter what container drink in" forState:UIControlStateNormal];
-       button.translatesAutoresizingMaskIntoConstraints=NO;
-       [button.widthAnchor constraintEqualToConstant:250].active=YES;
-       [button.heightAnchor constraintEqualToConstant:50].active=YES;
-       button.backgroundColor = [UIColor accentColor];
-       [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-       
-       [button addTarget:self action:@selector(addContainerAlert) forControlEvents:(UIControlEventTouchUpInside)];
-       
-       return button;
+    [button setTitle:@"Choose amount" forState:UIControlStateNormal];
+    button.translatesAutoresizingMaskIntoConstraints=NO;
+    [button.widthAnchor constraintEqualToConstant:250].active=YES;
+    [button.heightAnchor constraintEqualToConstant:50].active=YES;
+    button.backgroundColor = [UIColor accentColor];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.layer.cornerRadius = 15;
+    [button addTarget:self action:@selector(addContainerAlert) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    return button;
 }
 
 -(UILabel *) setUpEnterLabel{
@@ -80,7 +77,7 @@
     CGFloat screenWidth=screenRect.size.width;
     
     label.textAlignment=NSTextAlignmentCenter;
-    label.text=@"Enter what you drunk";
+    label.text=@"What did you drink?";
     label.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
     [label.widthAnchor constraintEqualToConstant:screenWidth],
@@ -115,11 +112,11 @@
      UIAlertAction *largeGlassAction = [UIAlertAction actionWithTitle:@"Glass(1000ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         
      }];
-     UIAlertAction *redWhineClassAction = [UIAlertAction actionWithTitle:@"Glass for red whine(160ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-         
+     UIAlertAction *redWineClassAction = [UIAlertAction actionWithTitle:@"Glass for red wine(160ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+         [self.alchoContainerButton setTitle:@"Glass for red wine(160ml)" forState:UIControlStateNormal];
      }];
      
-     UIAlertAction *whiteWhineGlassAction = [UIAlertAction actionWithTitle:@"Glass for white whine(120ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+     UIAlertAction *whiteWineGlassAction = [UIAlertAction actionWithTitle:@"Glass for white wine(120ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
          
      }];
      UIAlertAction *cognacGlassAction = [UIAlertAction actionWithTitle:@"Glass for cognac(260ml)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
@@ -135,8 +132,8 @@
     [alertController addAction:glassOfBeerAction];
     [alertController addAction:pintAction];
     [alertController addAction:largeGlassAction];
-    [alertController addAction:redWhineClassAction];
-    [alertController addAction:whiteWhineGlassAction];
+    [alertController addAction:redWineClassAction];
+    [alertController addAction:whiteWineGlassAction];
     [alertController addAction:cognacGlassAction];
     [alertController addAction:whiskeyGlassAction];
     
@@ -159,7 +156,7 @@
         
      }];
      UIAlertAction *whiskey42Action = [UIAlertAction actionWithTitle:@"Whiskey(42%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-       
+         
      }];
      
      UIAlertAction *whiskey40Action = [UIAlertAction actionWithTitle:@"Whiskey(40%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
@@ -172,16 +169,16 @@
      UIAlertAction *liquorAction = [UIAlertAction actionWithTitle:@"Liquour(20%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
          
      }];
-     UIAlertAction *redWhineAction = [UIAlertAction actionWithTitle:@"Red Whine(21%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+     UIAlertAction *redWineAction = [UIAlertAction actionWithTitle:@"Red Wine(21%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
          
      }];
-     UIAlertAction *fruitWineAction = [UIAlertAction actionWithTitle:@"Fruit Whine(20%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+     UIAlertAction *fruitWineAction = [UIAlertAction actionWithTitle:@"Fruit Wine(20%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
        
      }];
-     UIAlertAction *whiteWhineAction = [UIAlertAction actionWithTitle:@"White Wine(12%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+     UIAlertAction *whiteWineAction = [UIAlertAction actionWithTitle:@"White Wine(12%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
          
      }];
-    UIAlertAction *redWhine11Action = [UIAlertAction actionWithTitle:@"Red Wine(11%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+    UIAlertAction *redWine11Action = [UIAlertAction actionWithTitle:@"Red Wine(11%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         
     }];
      UIAlertAction *champagneAction = [UIAlertAction actionWithTitle:@"Red Wine(12%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
@@ -191,7 +188,7 @@
         
      }];
      
-     UIAlertAction *whiteWhine8Action = [UIAlertAction actionWithTitle:@"White Whine(8%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+     UIAlertAction *whiteWine8Action = [UIAlertAction actionWithTitle:@"White Wine(8%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         
      }];
      UIAlertAction *darkBeerAction = [UIAlertAction actionWithTitle:@"Dark Beer(8%)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
@@ -215,14 +212,14 @@
      [alertController addAction:whiskey40Action];
      [alertController addAction:cognacAction];
      [alertController addAction:liquorAction];
-     [alertController addAction:redWhine11Action];
+     [alertController addAction:redWine11Action];
      [alertController addAction:fruitWineAction];
-     [alertController addAction:whiteWhineAction];
-     [alertController addAction:redWhineAction];
+     [alertController addAction:whiteWineAction];
+     [alertController addAction:redWineAction];
      
      [alertController addAction:champagneAction];
      [alertController addAction:jinnTonikAction];
-     [alertController addAction:whiteWhine8Action];
+     [alertController addAction:whiteWine8Action];
      [alertController addAction:darkBeerAction];
      [alertController addAction:beerAction];
      [alertController addAction:darkBeer5Action];

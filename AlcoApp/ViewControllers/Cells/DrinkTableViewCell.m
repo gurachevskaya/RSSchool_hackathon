@@ -7,9 +7,11 @@
 //
 
 #import "DrinkTableViewCell.h"
+#import "UIColor+ProjectColors.h"
 
 
 @interface DrinkTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *roundedView;
 
 @end
 
@@ -18,7 +20,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.layer.cornerRadius = 30;
+    self.roundedView.backgroundColor = [UIColor primaryLightColor];
+
 }
 
 

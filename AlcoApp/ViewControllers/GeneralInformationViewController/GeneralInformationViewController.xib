@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GeneralInformationViewController">
             <connections>
                 <outlet property="addButton" destination="tfq-JU-kMG" id="Tbj-KF-coS"/>
+                <outlet property="infoView" destination="ozO-sO-zPC" id="yYd-Gt-Xf7"/>
                 <outlet property="promillesLabel" destination="3OZ-hv-di0" id="qEb-YF-eOy"/>
                 <outlet property="stateLabel" destination="M3c-2e-nsb" id="qW1-4L-hpF"/>
                 <outlet property="tableView" destination="po7-GB-AXz" id="5R8-yI-Ol9"/>
@@ -27,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-sO-zPC">
                     <rect key="frame" x="10" y="54" width="394" height="160"/>
                     <subviews>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-RD-YNz">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-RD-YNz">
                             <rect key="frame" x="128" y="13.5" width="138" height="64.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="55"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,8 +61,13 @@
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3OZ-hv-di0" secondAttribute="trailing" constant="10" id="tE4-MN-S0Q"/>
                         <constraint firstItem="3OZ-hv-di0" firstAttribute="centerX" secondItem="ozO-sO-zPC" secondAttribute="centerX" id="vCj-gw-vHu"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="po7-GB-AXz">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="po7-GB-AXz">
                     <rect key="frame" x="10" y="224" width="394" height="638"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="sectionIndexBackgroundColor" red="0.89092243019999995" green="0.89092243019999995" blue="0.89092243019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -82,6 +88,11 @@
                     <state key="normal" title="Button" image="plus">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="Ivm-R6-V9s"/>
                     </connections>

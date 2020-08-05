@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wine" translatesAutoresizingMaskIntoConstraints="NO" id="Zrw-JI-eG2">
-                    <rect key="frame" x="143" y="389" width="128" height="128"/>
+                    <rect key="frame" x="175" y="421" width="64" height="64"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" name="PALE MAGENTA-PINK"/>
+            <color key="backgroundColor" name="Color2"/>
             <constraints>
                 <constraint firstItem="Zrw-JI-eG2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="8ez-PY-1TZ"/>
                 <constraint firstItem="Zrw-JI-eG2" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="g8k-Xf-uIQ"/>
@@ -29,9 +29,9 @@
         </view>
     </objects>
     <resources>
-        <image name="wine" width="128" height="128"/>
-        <namedColor name="PALE MAGENTA-PINK">
-            <color red="1" green="0.57999998331069946" blue="0.76099997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="wine" width="64" height="64"/>
+        <namedColor name="Color2">
+            <color red="1" green="0.65490196078431373" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

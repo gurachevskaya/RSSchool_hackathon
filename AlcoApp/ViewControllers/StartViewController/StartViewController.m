@@ -71,7 +71,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     self.helloLabel=[self setUpHelloLabel];
     self.appNameLabel = [self setUpAppNameLabel];
-
+    
     [self.view addSubview:self.helloLabel];
     [self.view addSubview:self.appNameLabel];
     
@@ -104,7 +104,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     helloLabel.textAlignment=NSTextAlignmentCenter;
     helloLabel.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
-    [helloLabel.widthAnchor constraintEqualToConstant:screenWidth],
+        [helloLabel.widthAnchor constraintEqualToConstant:screenWidth],
     ]];
     return helloLabel;
 }
@@ -120,7 +120,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     appName.text=NAME_CONST;
     appName.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
-    [appName.widthAnchor constraintEqualToConstant:screenWidth],
+        [appName.widthAnchor constraintEqualToConstant:screenWidth],
     ]];
     return appName;
 }
@@ -145,7 +145,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 -(UITextField *) setUpAgeTextField{
     UITextField *ageTextField=[UITextField new];
     
-
+    
     ageTextField.borderStyle = UITextBorderStyleRoundedRect;
     ageTextField.clearsOnBeginEditing = YES;
     ageTextField.placeholder = @"Enter your age";
@@ -155,8 +155,8 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     ageTextField.translatesAutoresizingMaskIntoConstraints=NO;
     [NSLayoutConstraint activateConstraints:@[
-    [ageTextField.widthAnchor constraintEqualToConstant:TEXT_FIELD_WIDTH_CONST],
-    [ageTextField.heightAnchor constraintEqualToConstant:TEXT_FIELD_HEIGHT_CONST]
+        [ageTextField.widthAnchor constraintEqualToConstant:TEXT_FIELD_WIDTH_CONST],
+        [ageTextField.heightAnchor constraintEqualToConstant:TEXT_FIELD_HEIGHT_CONST]
     ]];
     
     return ageTextField;
