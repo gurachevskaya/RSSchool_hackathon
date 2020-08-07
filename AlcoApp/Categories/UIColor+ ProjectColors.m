@@ -11,19 +11,19 @@
 @implementation UIColor (ProjectColors)
 
 + (UIColor *)primaryColor {
-    return [UIColor colorNamed:@"Color2"];
+    return [UIColor colorNamed:@"PALE MAGENTA-PINK"];
 }
 
 + (UIColor *)primaryDarkColor {
-    return [UIColor colorNamed:@"Color3"];
+    return [UIColor colorNamed:@"MAROON"];
 }
 
 + (UIColor *)primaryLightColor {
-    return [UIColor colorNamed:@"Color1"];
+    return [UIColor colorNamed:@"SHAMPOO"];
 }
 
 + (UIColor *)accentColor {
-    return [UIColor colorNamed:@"Color4"];
+    return [UIColor colorNamed:@"DARK LAVENDER"];
 }
 
 @end

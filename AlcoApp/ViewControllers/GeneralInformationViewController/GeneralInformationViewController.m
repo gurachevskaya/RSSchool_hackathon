@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promillesLabel;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (strong, nonatomic) StartViewController *preferencesVC;
 
 @property (nonatomic, assign) NSTimeInterval timeProgress;
 @property (nonatomic, strong) NSTimer *timer;
@@ -51,15 +52,15 @@
     self.frc.delegate = self;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
-    
-    float promilles = [self calculatePromilles];
-    self.timeProgress = promilles/0.15 * 60 * 60;
-    [self startTimer];
+//    self.preferencesVC.onDoneBlock = {[self.preferencesVC dismissViewControllerAnimated:YES completion:nil]};
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.frc performFetch:nil];
+    float promilles = [self calculatePromilles];
+    self.timeProgress = promilles/0.15 * 60 * 60;
+    [self startTimer];
 }
 
 #pragma mark - UITableViewDataSource
@@ -166,9 +167,9 @@
 
 - (IBAction)addButtonTapped:(id)sender {
     
-//    [self presentViewController:[DrinkTypeViewController new] animated:YES completion:nil];
-    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
-    NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
+    [self presentViewController:[DrinkTypeViewController new] animated:YES completion:nil];
+//    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
+//    NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
 }
 
 
@@ -198,7 +199,7 @@
     
     [self.timerLabel setText:[NSString timeFormatted:self.timeProgress]];
 
-    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", [self calculatePromilles]];
+    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f‰ of alcohol in your blood", [self calculatePromilles]];
     [self updateStateLabelText];
 }
 

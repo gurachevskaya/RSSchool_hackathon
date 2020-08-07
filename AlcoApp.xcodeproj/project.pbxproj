@@ -34,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A0B3CD224DC3ECC006B3667 /* Gauge-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gauge-Regular.ttf"; sourceTree = "<group>"; };
 		9A14BFF124D74AA800189FC0 /* Drink+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataProperties.h"; sourceTree = "<group>"; };
 		9A14BFF224D74AA800189FC0 /* Drink+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataClass.h"; sourceTree = "<group>"; };
 		9A14BFF324D74AA800189FC0 /* Drink+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Drink+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 			children = (
 				9A63690624D5792800B8579B /* Amatic-Bold.ttf */,
 				9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */,
+				9A0B3CD224DC3ECC006B3667 /* Gauge-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";

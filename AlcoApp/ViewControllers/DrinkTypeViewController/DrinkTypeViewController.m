@@ -12,11 +12,14 @@
 @interface DrinkTypeViewController ()
 @property(strong,nonatomic) UIButton *drinkTypeButton;
 @property(strong,nonatomic) UIButton *alchoContainerButton;
+@property(strong,nonatomic) UIButton *okButton;
+
 @property(strong,nonatomic) UILabel *enterDrinksLabel;
 
 @property(strong,nonatomic) NSString *nameOfDrink;
 @property(assign,nonatomic) NSInteger *volume;
 @property(assign,nonatomic) NSInteger *persent;
+
 @end
 
 @implementation DrinkTypeViewController
@@ -31,6 +34,9 @@
     
     self.drinkTypeButton=[self setUpTypeButton];
     [self.view addSubview:self.drinkTypeButton];
+    
+    self.okButton=[self setUpOkButton];
+    [self.view addSubview:self.okButton];
     
     self.alchoContainerButton=[self setUpContainerButton];
     [self.view addSubview:self.alchoContainerButton];
@@ -50,6 +56,21 @@
     button.backgroundColor = [UIColor accentColor];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button.layer.cornerRadius = 15;
+    [button addTarget:self action:@selector(addTypeAlert) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    return button;
+    
+}
+
+- (UIButton*)setUpOkButton{
+    UIButton *button=[UIButton new];
+    [button setTitle:@"OK" forState:UIControlStateNormal];
+    button.translatesAutoresizingMaskIntoConstraints=NO;
+    [button.widthAnchor constraintEqualToConstant:60].active=YES;
+    [button.heightAnchor constraintEqualToConstant:60].active=YES;
+    button.backgroundColor = [UIColor accentColor];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.layer.cornerRadius = 30;
     [button addTarget:self action:@selector(addTypeAlert) forControlEvents:(UIControlEventTouchUpInside)];
     
     return button;
@@ -239,8 +260,9 @@
     
     [self.drinkTypeButton.centerXAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.centerXAnchor constant:0],
     [self.alchoContainerButton.topAnchor constraintEqualToAnchor:self.drinkTypeButton.bottomAnchor constant:100],
-    [self.alchoContainerButton.centerXAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.centerXAnchor constant:0]
-        
+    [self.alchoContainerButton.centerXAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.centerXAnchor constant:0],
+    [self.okButton.centerXAnchor constraintEqualToAnchor: self.view.safeAreaLayoutGuide.trailingAnchor constant:-60],
+    [self.okButton.centerYAnchor constraintEqualToAnchor: self.view.safeAreaLayoutGuide.bottomAnchor constant:-60]
     ]];
     
 }

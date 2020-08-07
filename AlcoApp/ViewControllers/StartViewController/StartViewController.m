@@ -10,9 +10,10 @@
 #import "GeneralInformationViewController.h"
 #import "DataManager.h"
 #import "UIColor+ProjectColors.h"
+#import "User+CoreDataClass.h"
 
 static NSString *NAME_CONST=@"Alchometr";
-static NSString *FONT_CONST=@"AmaticSC-Regular";
+static NSString *FONT_CONST=@"Gauge-Regular";
 static CGFloat TEXT_FIELD_HEIGHT_CONST=(CGFloat)50;
 static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
@@ -28,6 +29,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 @property(strong,nonatomic) UILabel *helloLabel;
 @property(strong,nonatomic) UILabel *appNameLabel;
 
+
 @end
 
 @interface GreetingViewController : StartViewController
@@ -40,12 +42,9 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 @implementation StartViewController
 
-//Ensuring below that the configureButtonText and configureLabelText, nextButtonTapped method must be implemented by the private subclasses
-- (void)configureButtonText {
-    [NSException raise:NSInternalInconsistencyException
-                format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
-}
--(void)configureLabelText{
+//Ensuring below that the configureText and nextButtonTapped method must be implemented by the private subclasses
+
+-(void)configureText{
     [NSException raise:NSInternalInconsistencyException
     format:@"You have not implemented %@ in %@", NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
@@ -71,6 +70,7 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     
     self.helloLabel=[self setUpHelloLabel];
     self.appNameLabel = [self setUpAppNameLabel];
+    [self.appNameLabel setHidden:YES];
     
     [self.view addSubview:self.helloLabel];
     [self.view addSubview:self.appNameLabel];
@@ -82,10 +82,10 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
     [self.view addSubview:self.nextButton];
     
     [self creatingConstraints:self.helloLabel andStackView:stackView andNextButton:self.nextButton];
-    [self configureButtonText];
-    [self configureLabelText];
+    [self configureText];
     
     [self hideWhenTappedAround];
+    
     
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -276,14 +276,11 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 @implementation GreetingViewController
 
-- (void)configureButtonText {
+- (void)configureText {
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    
-}
-
--(void)configureLabelText{
     self.helloLabel.text=@"Hello! ";
 }
+
 
 - (void)nextButtonTapped {
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
@@ -310,26 +307,36 @@ static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 
 @implementation PreferencesViewController
 
-- (void)configureButtonText {
+- (void)configureText {
     [self.nextButton setTitle:@"Update" forState:UIControlStateNormal];
-    
-}
-
--(void)configureLabelText{
     self.helloLabel.text=@"Info about me:";
+    
+    NSManagedObjectContext *viewContext = [DataManager sharedManager].newBackgroundContext;
+    NSFetchRequest *fetchRequest = [User fetchRequest];
+    NSArray *resultArray = [viewContext executeFetchRequest:fetchRequest error:nil];
+    
+    if (resultArray.count != 0) {
+        User *user = [resultArray firstObject];
+        self.weightTextField.placeholder = [NSString stringWithFormat:@"%hd kg", user.weight];
+        self.ageTextField.placeholder = [NSString stringWithFormat:@"%hd ages", user.age];
+    }
 }
 
 - (void)nextButtonTapped {
+    
     NSString *sex =  [self.sexSegmentControl titleForSegmentAtIndex:self.sexSegmentControl.selectedSegmentIndex];
     NSInteger age = [self.ageTextField.text intValue];
     NSInteger weight =[self.weightTextField.text intValue];
     
-
-    if (age < 18 ) {
-        [self showAgeAlert];
+    if (age != 0 && weight != 0) {
+        if (age < 18) {
+            [self showAgeAlert];
+        } else {
+            [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     } else {
-    [[DataManager sharedManager] configureUserWithAge:age sex:sex weight:weight];
-    [self dismissViewControllerAnimated:YES completion:nil];
+        [self showAlert];
     }
 }
 
