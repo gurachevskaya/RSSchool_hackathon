@@ -56,9 +56,9 @@
      [fetchRequest setReturnsObjectsAsFaults:NO];
      NSArray *drinks = [context executeFetchRequest:request error:nil];
     
-//    NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:[User fetchRequest]];
-//     [context executeRequest:deleteRequest error:nil];
-//    [context save:nil];
+    NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:[User fetchRequest]];
+     [context executeRequest:deleteRequest error:nil];
+    [context save:nil];
 
      NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[User fetchRequest] error:nil]);
      

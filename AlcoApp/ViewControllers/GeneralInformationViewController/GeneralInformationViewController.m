@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promillesLabel;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (strong, nonatomic) StartViewController *preferencesVC;
 
 @property (nonatomic, assign) NSTimeInterval timeProgress;
 @property (nonatomic, strong) NSTimer *timer;
@@ -36,16 +38,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
-    
+        
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
     preferencesButton.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = preferencesButton;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor = [UIColor primaryDarkColor];
     
-
     [self configureAppearance];
     self.tableView.allowsSelection = NO;
            
@@ -53,15 +52,15 @@
     self.frc.delegate = self;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"DrinkTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
-    
-    float promilles = [self calculatePromilles];
-    self.timeProgress = promilles/0.15 * 60 * 60;
-    [self startTimer];
+//    self.preferencesVC.onDoneBlock = {[self.preferencesVC dismissViewControllerAnimated:YES completion:nil]};
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.frc performFetch:nil];
+    float promilles = [self calculatePromilles];
+    self.timeProgress = promilles/0.15 * 60 * 60;
+    [self startTimer];
 }
 
 #pragma mark - UITableViewDataSource
@@ -77,19 +76,19 @@
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"History";
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    return @"History";
+//}
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    // Background color
-    view.tintColor = [UIColor primaryDarkColor];
-    // Text Color
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor blackColor]];
-}
+//- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+//    // Background color
+//    view.tintColor = [UIColor primaryDarkColor];
+//    // Text Color
+//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+//    [header.textLabel setTextColor:[UIColor blackColor]];
+//}
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
@@ -107,36 +106,35 @@
 
 
 
+
 #pragma mark - Fetched Results Controller Delegate
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath {
-    
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    [self stopTimer];
+    __weak typeof(self) weakSelf = self;
     switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            self.timeProgress = [self calculatePromilles]/0.15 * 60 * 60;
-            [self stopTimer];
-            [self startTimer];
-
+        case NSFetchedResultsChangeInsert:{
+            [self.tableView performBatchUpdates:^{
+                [weakSelf.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            } completion:^(BOOL finished) {
+                weakSelf.timeProgress = [weakSelf calculatePromilles]/0.15 * 60 * 60;
+                [weakSelf startTimer];
+            }];
+           
             break;
+        }
             
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            self.timeProgress = [self calculatePromilles]/0.15 * 60 * 60;
-            [self stopTimer];
-
-            [self startTimer];
-
+        case NSFetchedResultsChangeDelete:{
+            [self.tableView performBatchUpdates:^{
+               [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            } completion:^(BOOL finished) {
+                weakSelf.timeProgress = [weakSelf calculatePromilles]/0.15 * 60 * 60;
+                [weakSelf startTimer];
+            }];
+            
             break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            self.timeProgress = [self calculatePromilles]/0.15 * 60 * 60;
-            [self stopTimer];
+        }
 
-            [self startTimer];
-            break;
-            
         default:
             break;
     }
@@ -148,6 +146,8 @@
 
 - (void)configureAppearance {
     self.addButton.layer.cornerRadius = self.addButton.bounds.size.width / 2;
+    self.addButton.backgroundColor = [UIColor accentColor];
+    self.infoView.backgroundColor = [UIColor primaryColor];
     UIBarButtonItem *preferencesButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"adjust"] style:UIBarButtonItemStylePlain target:self action:@selector(openPreferences)];
     preferencesButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = preferencesButton;
@@ -167,9 +167,9 @@
 
 - (IBAction)addButtonTapped:(id)sender {
     
-//    [self presentViewController:[DrinkTypeViewController new] animated:YES completion:nil];
-    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
-    NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
+    [self presentViewController:[DrinkTypeViewController new] animated:YES completion:nil];
+//    [[DataManager sharedManager] addDrink:@"Wine" alcoholPercent:12 volume:200];
+//    NSLog(@"%ld", [[DataManager sharedManager].newBackgroundContext countForFetchRequest:[Drink fetchRequest] error:nil]);
 }
 
 
@@ -199,9 +199,8 @@
     
     [self.timerLabel setText:[NSString timeFormatted:self.timeProgress]];
 
-    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f of alcohol in your blood", [self calculatePromilles]];
+    self.promillesLabel.text = [NSString stringWithFormat:@"There is %.2f‰ of alcohol in your blood", [self calculatePromilles]];
     [self updateStateLabelText];
-
 }
 
 - (Behaviour)getBehaviourFromPromilles:(float)promilles {
