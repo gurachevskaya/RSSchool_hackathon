@@ -13,7 +13,7 @@
 #import "User+CoreDataClass.h"
 
 static NSString *NAME_CONST=@"Alchometr";
-static NSString *FONT_CONST=@"Gauge-Regular";
+static NSString *FONT_CONST=@"AmaticSC-Regular";
 static CGFloat TEXT_FIELD_HEIGHT_CONST=(CGFloat)50;
 static CGFloat TEXT_FIELD_WIDTH_CONST=(CGFloat)350;
 

@@ -39,70 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "13B18A0F-F841-4055-8472-3C3D37825D3F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7A287797-03B5-49A8-A4D4-A9D0D85BBFCC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FDA06833-7794-4ECD-8FC0-75B576482CBD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlcoApp/ViewControllers/StartViewController/StartViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
-            landmarkName = "-nextButtonTapped"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "08BE4A72-2FA0-4048-8C7C-D056C3B79D44"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlcoApp/ViewControllers/StartViewController/StartViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "-nextButtonTapped"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "98DAF43A-9026-478C-9AA5-25BA798FF5CE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -158,9 +94,9 @@
             filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-handleTimer"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-addButtonTapped:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,58 +110,264 @@
             filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-handleTimer"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-addButtonTapped:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8C66FF69-69AE-42C8-9489-CCCF097DEB7E"
+            uuid = "FF24A267-D1B0-43BD-BF91-C77C932B1BE1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-handleTimer"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "-calculatePromilles"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5D9474C-DA0F-4C8B-A57D-DB59E92B8297"
+            uuid = "4C10AA2C-EEF1-44DA-AE7A-4349030BE521"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-tableView:trailingSwipeActionsConfigurationForRowAtIndexPath:"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "-calculatePromilles"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CC5F97DF-B97E-48FB-97CA-1BD51ECCCD6C"
+            uuid = "5291DA95-6B21-46FA-9AED-C5A2DCBF049A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "GeneralInformationViewController"
-            landmarkType = "3">
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFEC6588-559B-42CB-9C5D-75D49C0A1245"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CFEC6588-559B-42CB-9C5D-75D49C0A1245 - 5bdde0e074b038b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GeneralInformationViewController controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:]"
+                  moduleName = "AlcoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karina/developer/hackathon/AlcoApp/AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "245">
+               </Location>
+               <Location
+                  uuid = "CFEC6588-559B-42CB-9C5D-75D49C0A1245 - 593204ad7d9f91d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__102-[GeneralInformationViewController controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:]_block_invoke"
+                  moduleName = "AlcoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karina/developer/hackathon/AlcoApp/AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "CFEC6588-559B-42CB-9C5D-75D49C0A1245 - 139a480b7639f098"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_e8_32s40w"
+                  moduleName = "AlcoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karina/developer/hackathon/AlcoApp/AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D60BEE8C-2EA9-48A1-AC7C-3D2837AF830F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D60BEE8C-2EA9-48A1-AC7C-3D2837AF830F - 5bdde0e074b038b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GeneralInformationViewController controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:]"
+                  moduleName = "AlcoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karina/developer/hackathon/AlcoApp/AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "245">
+               </Location>
+               <Location
+                  uuid = "D60BEE8C-2EA9-48A1-AC7C-3D2837AF830F - 593204ad7d9f91d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__102-[GeneralInformationViewController controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:]_block_invoke"
+                  moduleName = "AlcoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karina/developer/hackathon/AlcoApp/AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "D60BEE8C-2EA9-48A1-AC7C-3D2837AF830F - 139a480b7639f098"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_e8_32s40w"
+                  moduleName = "AlcoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karina/developer/hackathon/AlcoApp/AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA361EC4-51BE-42AB-AA8B-5A2488B13399"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E01A4CD0-BFC6-4401-8F8E-6945DF377815"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "-calculatePromilles"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D2249AA-409D-41D1-9099-7C057B08DB19"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-calculatePromilles"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47283613-92EA-4C24-9F39-DCFA4CE4A893"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "-calculatePromilles"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E93B51F-2242-4BFB-9E5D-988F2DEB4C54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlcoApp/ViewControllers/GeneralInformationViewController/GeneralInformationViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
