@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0F65FB254360E90036CCC0 /* Снимок экрана 2020-10-23 в 22.02.48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F65FA254360E90036CCC0 /* Снимок экрана 2020-10-23 в 22.02.48.png */; };
+		9A0F65FF254361030036CCC0 /* Снимок экрана 2020-10-23 в 22.03.36.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F65FE254361030036CCC0 /* Снимок экрана 2020-10-23 в 22.03.36.png */; };
+		9A0F6601254361100036CCC0 /* Снимок экрана 2020-10-23 в 22.04.13.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F6600254361100036CCC0 /* Снимок экрана 2020-10-23 в 22.04.13.png */; };
 		9A14BFF524D74AA800189FC0 /* Drink+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14BFF324D74AA800189FC0 /* Drink+CoreDataClass.m */; };
 		9A14BFF624D74AA800189FC0 /* Drink+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14BFF424D74AA800189FC0 /* Drink+CoreDataProperties.m */; };
 		9A63690224D56FE200B8579B /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63690024D56FE200B8579B /* UserInfoViewController.m */; };
@@ -34,7 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9A0B3CD224DC3ECC006B3667 /* Gauge-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gauge-Regular.ttf"; sourceTree = "<group>"; };
+		9A0F65FA254360E90036CCC0 /* Снимок экрана 2020-10-23 в 22.02.48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Снимок экрана 2020-10-23 в 22.02.48.png"; sourceTree = "<group>"; };
+		9A0F65FE254361030036CCC0 /* Снимок экрана 2020-10-23 в 22.03.36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Снимок экрана 2020-10-23 в 22.03.36.png"; sourceTree = "<group>"; };
+		9A0F6600254361100036CCC0 /* Снимок экрана 2020-10-23 в 22.04.13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Снимок экрана 2020-10-23 в 22.04.13.png"; sourceTree = "<group>"; };
 		9A14BFF124D74AA800189FC0 /* Drink+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataProperties.h"; sourceTree = "<group>"; };
 		9A14BFF224D74AA800189FC0 /* Drink+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drink+CoreDataClass.h"; sourceTree = "<group>"; };
 		9A14BFF324D74AA800189FC0 /* Drink+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Drink+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -92,12 +97,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A0F65F9254360B80036CCC0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9A0F65FA254360E90036CCC0 /* Снимок экрана 2020-10-23 в 22.02.48.png */,
+				9A0F65FE254361030036CCC0 /* Снимок экрана 2020-10-23 в 22.03.36.png */,
+				9A0F6600254361100036CCC0 /* Снимок экрана 2020-10-23 в 22.04.13.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		9A63690424D578EB00B8579B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				9A63690624D5792800B8579B /* Amatic-Bold.ttf */,
 				9A63690524D5792800B8579B /* AmaticSC-Regular.ttf */,
-				9A0B3CD224DC3ECC006B3667 /* Gauge-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -198,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				9A8E9A0624D569540033E1C4 /* AlcoApp */,
-				9A8E9A0524D569540033E1C4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +221,7 @@
 				9A8E9A0424D569540033E1C4 /* AlcoApp.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9A8E9A0624D569540033E1C4 /* AlcoApp */ = {
@@ -218,6 +232,8 @@
 				9A8E9A5024D56BA40033E1C4 /* ViewControllers */,
 				9A63690F24D5A3FA00B8579B /* Models */,
 				9A63693124D6B47E00B8579B /* Categories */,
+				9A8E9A0524D569540033E1C4 /* Products */,
+				9A0F65F9254360B80036CCC0 /* Images */,
 				9A8E9A0D24D569540033E1C4 /* ViewController.h */,
 				9A8E9A0E24D569540033E1C4 /* ViewController.m */,
 				9A8E9A1024D569540033E1C4 /* Main.storyboard */,
@@ -314,8 +330,11 @@
 			files = (
 				9A8E9A1724D569570033E1C4 /* Assets.xcassets in Resources */,
 				9A8192B624D56F09005CE928 /* DrinkDetailedInfoViewController.xib in Resources */,
+				9A0F6601254361100036CCC0 /* Снимок экрана 2020-10-23 в 22.04.13.png in Resources */,
+				9A0F65FF254361030036CCC0 /* Снимок экрана 2020-10-23 в 22.03.36.png in Resources */,
 				9A8192AA24D56E53005CE928 /* DrinkTypeViewController.xib in Resources */,
 				9A8192B024D56EC5005CE928 /* GeneralInformationViewController.xib in Resources */,
+				9A0F65FB254360E90036CCC0 /* Снимок экрана 2020-10-23 в 22.02.48.png in Resources */,
 				9A63690724D5792800B8579B /* AmaticSC-Regular.ttf in Resources */,
 				9A63690324D56FE200B8579B /* UserInfoViewController.xib in Resources */,
 				9A63691924D5DCFE00B8579B /* DrinkTableViewCell.xib in Resources */,

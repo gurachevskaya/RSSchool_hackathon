@@ -33,7 +33,7 @@
     <resources>
         <image name="logo" width="1390" height="390"/>
         <namedColor name="PALE MAGENTA-PINK">
-            <color red="1" green="0.58039215686274503" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.57999998331069946" blue="0.76099997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
